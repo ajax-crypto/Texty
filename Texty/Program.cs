@@ -16,6 +16,7 @@ namespace Texty
         public static bool highlighted = false;
         public static int mode = TEXT;
         public static bool fromFindBox = false;
+        public static bool readmode = true;
 
         public const String SETTINGS_FILE = "texty.settings";
         public static Settings settings;

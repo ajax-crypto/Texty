@@ -81,8 +81,6 @@ namespace Texty
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ModeLabel = new System.Windows.Forms.Label();
             this.ReplaceBox = new System.Windows.Forms.TextBox();
-            //this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            //this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.Doc1 = new System.Windows.Forms.Label();
             this.UnderlineButton = new System.Windows.Forms.Button();
             this.ItalicsButton = new System.Windows.Forms.Button();
@@ -106,6 +104,7 @@ namespace Texty
             this.BoldTT = new System.Windows.Forms.ToolTip(this.components);
             this.UnderlineTT = new System.Windows.Forms.ToolTip(this.components);
             this.SettingsTT = new System.Windows.Forms.ToolTip(this.components);
+            this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TextyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,7 +215,7 @@ namespace Texty
             this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.TextyMenu.Location = new System.Drawing.Point(16, 67);
             this.TextyMenu.Name = "TextyMenu";
-            this.TextyMenu.Size = new System.Drawing.Size(251, 25);
+            this.TextyMenu.Size = new System.Drawing.Size(343, 25);
             this.TextyMenu.TabIndex = 22;
             this.TextyMenu.Text = "menuStrip1";
             // 
@@ -238,7 +237,7 @@ namespace Texty
             // 
             this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -246,7 +245,7 @@ namespace Texty
             // 
             this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -254,33 +253,33 @@ namespace Texty
             // 
             this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(106, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -398,7 +397,8 @@ namespace Texty
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zoomToolStripMenuItem,
-            this.zoomOutToolStripMenuItem});
+            this.zoomOutToolStripMenuItem,
+            this.readOnlyToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.viewToolStripMenuItem.Text = "Vi&ew";
@@ -407,7 +407,7 @@ namespace Texty
             // 
             this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zoomToolStripMenuItem.Text = "&Zoom In";
             this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
             // 
@@ -415,7 +415,7 @@ namespace Texty
             // 
             this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
             this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
             // 
@@ -546,31 +546,6 @@ namespace Texty
             this.ReplaceBox.TabIndex = 25;
             this.ReplaceTT.SetToolTip(this.ReplaceBox, "Replace Text");
             this.ReplaceBox.TextChanged += new System.EventHandler(this.ReplaceBox_TextChanged);
-            /*
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1061, 627);
-            this.shapeContainer1.TabIndex = 26;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rectangleShape1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.rectangleShape1.FillColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rectangleShape1.Location = new System.Drawing.Point(-1, 11);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.SelectionColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rectangleShape1.Size = new System.Drawing.Size(12, 38);
-             */
             // 
             // Doc1
             // 
@@ -839,6 +814,12 @@ namespace Texty
             this.SettingsTT.AutomaticDelay = 0;
             this.SettingsTT.IsBalloon = true;
             // 
+            // readOnlyToolStripMenuItem
+            // 
+            this.readOnlyToolStripMenuItem.Name = "readOnlyToolStripMenuItem";
+            this.readOnlyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.readOnlyToolStripMenuItem.Text = "&Read Only";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,7 +851,6 @@ namespace Texty
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.TextyMenu);
             this.Controls.Add(this.label1);
-            //this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.TextyMenu;
             this.Name = "MainView";
@@ -893,7 +873,6 @@ namespace Texty
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        //call functions to move the form in your form's MouseDown event
         private void MainView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -902,8 +881,49 @@ namespace Texty
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         #endregion
+
+        [DllImport("user32", EntryPoint = "SendMessage")]
+        private static extern int SendMessageB(IntPtr hWnd, uint msg, int wParam, ref POINT lp);
+        
+        int updating = 0;
+        int OldEventMask = 0;
+        const uint EM_GETSCROLLPOS = 0x0400 + 221;
+        const uint EM_SETSCROLLPOS = 0x0400 + 222;
+        const int EM_SETEVENTMASK = 1073;
+        const int WM_SETREDRAW = 11;
+        struct POINT
+        {
+            public long X;
+            public long Y;
+        }
+
+        POINT ScrollPosition = new POINT();
+
+        public void BeginUpdate()
+        {
+            ++updating;
+            if (updating > 1)
+            {
+                return;
+            }
+            SendMessageB(Contents.Handle, EM_GETSCROLLPOS, 0, ref ScrollPosition);
+            OldEventMask = SendMessage(Contents.Handle, EM_SETEVENTMASK, 0, 0);
+            SendMessage(Contents.Handle, WM_SETREDRAW, 0, 0);
+        }
+
+        public void EndUpdate()
+        {
+            --updating;
+            if (updating > 0)
+            {
+                return;
+            }
+            SendMessageB(Contents.Handle, EM_SETSCROLLPOS, 0, ref ScrollPosition);
+            SendMessage(Contents.Handle, WM_SETREDRAW, 1, 0);
+            SendMessage(Contents.Handle, EM_SETEVENTMASK, 0, OldEventMask);
+        }
+
 
         public System.Windows.Forms.RichTextBox Contents;
         private System.Windows.Forms.Button SaveButton;
@@ -978,6 +998,7 @@ namespace Texty
         private ToolTip BoldTT;
         private ToolTip UnderlineTT;
         private ToolTip SettingsTT;
+        private ToolStripMenuItem readOnlyToolStripMenuItem;
     }
 }
 

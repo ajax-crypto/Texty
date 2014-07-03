@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Text;
 
 namespace Texty
 {
@@ -19,7 +17,8 @@ namespace Texty
         public static List<Triplet> GetIndexesWithColor(String text, 
                                                         Color keyword_color,
                                                         Color comment_color,
-                                                        Color ppd_clor)
+                                                        Color ppd_color,
+                                                        Color string_color)
         {
             List<Triplet> list = new List<Triplet>();
             int start = 0;
@@ -48,7 +47,23 @@ namespace Texty
                     }
                     triplet.start = start;
                     triplet.end = length;
-                    triplet.color = ppd_clor;
+                    triplet.color = ppd_color;
+                    list.Add(triplet);
+                }
+                else if (c == '"')
+                {
+                    int length = 0;
+                    start = i;
+                    while (i < text.Length)
+                    {
+                        ++length;
+                        ++i;
+                        if (text[i] == '"' && text[i-1] != '\\')
+                            break;
+                    }
+                    triplet.start = start;
+                    triplet.end = length + 1;
+                    triplet.color = string_color;
                     list.Add(triplet);
                 }
                 else if (c == '/')
@@ -82,7 +97,6 @@ namespace Texty
                     }
                     triplet.start = start;
                     triplet.end = length + 1;
-                    //Debug.WriteLine("Comment : " + triplet.start + " " + triplet.end);
                     list.Add(triplet);
                 }
                 else

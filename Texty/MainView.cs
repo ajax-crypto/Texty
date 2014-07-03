@@ -160,7 +160,8 @@ namespace Texty
                         Program.content = Contents.Text;
                         String ext = Path.GetExtension(open.FileName);
                         Doc1.Text = Path.GetFileName(open.FileName);
-                        processFile(ext);
+                        ProcessFile(ext);
+                        SetProperties(ext);
                         Program.CurrentFile = open.FileName;
                         Program.IsNew = false;
                     }
@@ -168,43 +169,9 @@ namespace Texty
             }
         }
 
-        private void OpenButton_Click(object sender, EventArgs e)
+        private void SetProperties(string ext)
         {
-            OpenFile();
-        }
-
-        private void processFile(String ext)
-        {
-            String content = Contents.Text;
-            Dictionary<int, int> indexes = null;
-            List<Triplet> list = null;
-            if (ext.Equals(".c"))
-            {
-                //indexes = CodeHighlighter.GetIndexes(content, LangC.keywords);
-                list = LangC.GetIndexesWithColor(content, Color.Blue, Color.Gray, Color.LawnGreen);
-                foreach (Triplet t in list)
-                {
-                    //Debug.WriteLine("Coloring : " + t.start + "  " + t.end + " " + t.color.ToString());
-                    Contents.Select(t.start, t.end);
-                    Contents.SelectionColor = t.color;
-                }
-                return;
-            }
-            else if (ext.Equals(".cpp"))
-            {
-                indexes = CodeHighlighter.GetIndexes(content, LangCPP.keywords);
-
-            }
-            else if (ext.Equals(".java"))
-            {
-                indexes = CodeHighlighter.GetIndexes(content, LangJava.keywords);
-
-            }
-            else if (ext.Equals(".cs"))
-            {
-                indexes = CodeHighlighter.GetIndexes(content, LangCSharp.keywords);
-            }
-            else if (ext.Equals(".rtf"))
+            if (ext.Equals(".rtf"))
             {
                 Program.mode = Program.TEXT;
                 colorToolStripMenuItem.Enabled = true;
@@ -214,6 +181,26 @@ namespace Texty
                 ItalicsButton.Enabled = true;
                 UnderlineButton.Enabled = true;
                 return;
+            }
+            else if (ext.Equals(".c") ||
+                ext.Equals(".cpp") ||
+                ext.Equals(".java") ||
+                ext.Equals(".cs"))
+            {
+                Program.mode = Program.DEVELOPER;
+                Program.readmode = true;
+                ModeLabel.Text = "Developer";
+                colorToolStripMenuItem.Enabled = false;
+                Contents.SelectAll();
+                Contents.SelectionAlignment = HorizontalAlignment.Left;
+                Contents.DeselectAll();
+                Contents.ReadOnly = true;
+                Contents.SelectionStart = 0;
+                timeDateToolStripMenuItem.Enabled = false;
+                alignmentrToolStripMenuItem.Enabled = false;
+                BoldButton.Enabled = false;
+                ItalicsButton.Enabled = false;
+                UnderlineButton.Enabled = false;
             }
             else
             {
@@ -228,24 +215,51 @@ namespace Texty
                 UpdateSettings();
                 return;
             }
-            ClearFormatting();
-            foreach (var pair in indexes)
+        }
+
+        private void OpenButton_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void ProcessFile(String ext)
+        {
+            String content = Contents.Text;
+            List<Triplet> list = null;
+            if (ext.Equals(".c"))
             {
-                Contents.Select(pair.Key, pair.Value);
-                Contents.SelectionColor = Color.Blue;
+                list = LangC.GetIndexesWithColor(content, 
+                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
             }
-            Program.mode = Program.DEVELOPER;
-            ModeLabel.Text = "Developer";
-            colorToolStripMenuItem.Enabled = false;
-            Contents.SelectAll();
-            Contents.SelectionAlignment = HorizontalAlignment.Left;
-            Contents.DeselectAll();
-            Contents.SelectionStart = 0;
-            timeDateToolStripMenuItem.Enabled = false;
-            alignmentrToolStripMenuItem.Enabled = false;
-            BoldButton.Enabled = false;
-            ItalicsButton.Enabled = false;
-            UnderlineButton.Enabled = false;
+            else if (ext.Equals(".cpp"))
+            {
+                list = LangCPP.GetIndexesWithColor(content,
+                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
+
+            }
+            else if (ext.Equals(".java"))
+            {
+                list = LangJava.GetIndexesWithColor(content,
+                    Color.Blue, Color.Gray, Color.Maroon);
+
+            }
+            else if (ext.Equals(".cs"))
+            {
+                list = LangCSharp.GetIndexesWithColor(content,
+                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
+            }
+            
+            ClearFormatting();
+
+            // Lock Screen View
+            BeginUpdate();
+            foreach (Triplet t in list)
+            {
+                Contents.Select(t.start, t.end);
+                Contents.SelectionColor = t.color;
+            }
+            // Unlock Screen View
+            EndUpdate();
         }
 
         private void Exit()
@@ -264,7 +278,6 @@ namespace Texty
                             break;
                         case ModernDialog.CENTER:
                             bool result = SaveFile();
-                            //Debug.Write("here saved" + result);
                             if (result)
                                 Application.Exit();
                             break;
@@ -322,7 +335,7 @@ namespace Texty
                             Contents.SaveFile(save.FileName);
                         else
                             File.WriteAllText(save.FileName, Contents.Text);
-                        processFile(Path.GetExtension(save.FileName));
+                        ProcessFile(Path.GetExtension(save.FileName));
                     }
                     catch (Exception exp)
                     {
@@ -385,6 +398,27 @@ namespace Texty
             }
             else
             {
+                if (Program.readmode)
+                {
+                    if (e.KeyCode != Keys.Up &&
+                        e.KeyCode != Keys.Down &&
+                        e.KeyCode != Keys.Right &&
+                        e.KeyCode != Keys.Left)
+                    {
+                        ModernDialog change = new ModernDialog("Change Mode ?",
+                            "Document is read-only, change mode ?", "Change", "Dont");
+                        change.ShowDialog();
+                        switch (change.result)
+                        {
+                            case ModernDialog.CENTER:
+                                break;
+                            case ModernDialog.LEFT:
+                                Contents.ReadOnly = false;
+                                Program.readmode = false;
+                                break;
+                        }
+                    }
+                }
                 // TODO : Auto bracket completion.
             }
         }
@@ -443,17 +477,17 @@ namespace Texty
             fontDialog.Font = Contents.Font;
             if (fontDialog.ShowDialog() != DialogResult.Cancel)
             {
-                if (Program.mode == Program.DEVELOPER)
-                {
-                    Contents.Font = fontDialog.Font;
-                    Contents.ForeColor = fontDialog.Color;
-                }
-                else if (Program.mode == Program.TEXT)
+                if (Program.mode == Program.TEXT)
                 {
                     Font font = Contents.Font;
                     Contents.SelectionFont = fontDialog.Font;
                     Contents.SelectionColor = fontDialog.Color;
                     Contents.Font = font;
+                }
+                else
+                {
+                    Contents.Font = fontDialog.Font;
+                    Contents.ForeColor = fontDialog.Color;
                 }
             }
         }
@@ -471,6 +505,10 @@ namespace Texty
             StatusLabel.Text = "Word Count : " + words.Length + " | Line Count : " + lines.Length;
             SaveStatus.Text = "Not Saved";
             Program.content = Contents.Text;
+            if (Program.mode == Program.DEVELOPER)
+            {
+                // TODO : Dynamic Highlighting.    
+            }
         }
 
         private void Copy_Click(object sender, EventArgs e)
@@ -655,7 +693,9 @@ namespace Texty
             try
             {
                 IEnumerable<int> indexes = TextManipulation.AllIndexesOf(Program.content, FindBox.Text);
+                BeginUpdate();
                 SearchHighlight(FindBox.Text, indexes);
+                EndUpdate();
             }
             catch (ArgumentException exp)
             {
@@ -680,8 +720,8 @@ namespace Texty
             {
                 ClearFormatting();
                 Program.fromFindBox = false;
-                if (!Program.IsNew)
-                    processFile(Path.GetExtension(Program.CurrentFile));
+                if (Program.mode == Program.DEVELOPER)
+                    ProcessFile(Path.GetExtension(Program.CurrentFile));
             }
         }
 
@@ -764,12 +804,15 @@ namespace Texty
             bool open = true;
             if (Program.IsSaved == false)
             {
+                var file = e.Node.FullPath;
+                if (Directory.Exists(file))
+                    return;
                 open = NewFile();
                 if (open)
                 {
-                    var file = e.Node.FullPath;
                     Contents.Text = File.ReadAllText(file);
-                    processFile(Path.GetExtension(file));
+                    ProcessFile(Path.GetExtension(file));
+                    SetProperties(Path.GetExtension(file));
                     Program.content = Contents.Text;
                     Program.CurrentFile = Path.GetFileName(file);
                 }
