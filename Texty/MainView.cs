@@ -23,14 +23,67 @@ namespace Texty
             this.Contents.GotFocus += this.Contents_GotFocus;
             this.Contents.KeyDown += this.Contents_MultiKey;
             this.Contents.SelectionChanged += Contents_SelectionChanged;
-            this.FindBox.KeyDown += this.FindBox_KeyDown;
-            this.ReplaceBox.KeyDown += this.ReplaceBox_KeyDown;
             this.ExitButton.MouseEnter += ExitButton_MouseEnter;
             this.ExitButton.MouseLeave += ExitButton_MouseLeave;
+            this.SystemExplorer.AfterSelect += SystemExplorer_AfterSelect;
+
+            this.ReplaceButton.Click += ReplaceButton_Click;
+            this.FindButton.Click += FindReplace_Click;
+            this.FindBox.KeyDown += FindBox_KeyDown;
+            this.ReplaceBox.KeyDown += ReplaceBox_KeyDown;
             this.FindBox.GotFocus += FindBox_GotFocus;
+            this.FindBox.TextChanged += FindBox_TextChanged;
+            this.ReplaceBox.TextChanged += ReplaceBox_TextChanged;
+
+            this.saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
+            this.newToolStripMenuItem.Click += newToolStripMenuItem_Click;
+            this.openToolStripMenuItem.Click += openToolStripMenuItem_Click;
+            this.printToolStripMenuItem.Click += printToolStripMenuItem_Click;
+            this.exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+
+            this.editToolStripMenuItem.DropDownOpening += editToolStripMenuItem_DropDownOpening;
+            this.undoToolStripMenuItem.Click += undoToolStripMenuItem_Click;
+            this.redoToolStripMenuItem.Click += redoToolStripMenuItem_Click;
+            this.cutToolStripMenuItem.Click += cutToolStripMenuItem_Click;
+            this.copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+            this.pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
+            this.delToolStripMenuItem.Click += delToolStripMenuItem_Click;
+            this.timeDateToolStripMenuItem.Click += timeDateToolStripMenuItem_Click;
+
+            this.zoomOutToolStripMenuItem.Click += zoomOutToolStripMenuItem_Click;
+            this.zoomToolStripMenuItem.Click += zoomToolStripMenuItem_Click;
+
+            this.fontToolStripMenuItem.Click += fontToolStripMenuItem_Click;
+            this.foregroundToolStripMenuItem.Click += foregroundToolStripMenuItem_Click;
+            this.backgroundToolStripMenuItem.Click += backgroundToolStripMenuItem_Click;
+            this.rightAlignToolStripMenuItem.Click += rightAlignToolStripMenuItem_Click;
+            this.leftAlignToolStripMenuItem.Click += leftAlignToolStripMenuItem_Click;
+            this.centerAlignToolStripMenuItem.Click += centerAlignToolStripMenuItem_Click;
+
+            this.creditsToolStripMenuItem.Click += creditsToolStripMenuItem_Click;
+            this.aboutToolStripMenuItem1.Click += aboutToolStripMenuItem1_Click;
 
             Program.settings = Settings.GetSettingsObject();
             UpdateSettings();
+        }
+
+        private void editToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (Contents.SelectedText.Length > 0)
+            {
+                cutToolStripMenuItem.Enabled = true;
+                copyToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                cutToolStripMenuItem.Enabled = false;
+                copyToolStripMenuItem.Enabled = false;
+            }
+
+            if (Clipboard.ContainsText())
+                pasteToolStripMenuItem.Enabled = true;
+            else
+                pasteToolStripMenuItem.Enabled = false;
         }
 
         private void Contents_SelectionChanged(object sender, EventArgs e)
@@ -40,16 +93,12 @@ namespace Texty
                 cutToolStripMenuItem.Enabled = true;
                 copyToolStripMenuItem.Enabled = true;
                 delToolStripMenuItem.Enabled = true;
-                CutButton.Enabled = true;
-                CopyButton.Enabled = true;
             }
             else
             {
                 cutToolStripMenuItem.Enabled = false;
                 copyToolStripMenuItem.Enabled = false;
                 delToolStripMenuItem.Enabled = false;
-                CutButton.Enabled = false;
-                CopyButton.Enabled = false;
             }
         }
 
@@ -141,7 +190,6 @@ namespace Texty
             open.RestoreDirectory = true;
             if (open.ShowDialog() == DialogResult.OK)
             {
-                StatusLabel.Text = open.FileName;
                 Stream stream = open.OpenFile();
                 if (stream == null)
                 {
@@ -164,6 +212,7 @@ namespace Texty
                         SetProperties(ext);
                         Program.CurrentFile = open.FileName;
                         Program.IsNew = false;
+                        Program.IsSaved = false;
                     }
                 }
             }
@@ -185,7 +234,8 @@ namespace Texty
             else if (ext.Equals(".c") ||
                 ext.Equals(".cpp") ||
                 ext.Equals(".java") ||
-                ext.Equals(".cs"))
+                ext.Equals(".cs") ||
+                ext.Equals(".js"))
             {
                 Program.mode = Program.DEVELOPER;
                 Program.readmode = true;
@@ -215,6 +265,11 @@ namespace Texty
                 UpdateSettings();
                 return;
             }
+            int wc = Contents.Text.Split(' ').Length;
+            int lc = Contents.Text.Split('\n').Length;
+            WCStatusLabel.Text = "Words : " + wc;
+            LCStatusLabel.Text = "Lines: " + lc;
+            SaveStatus.Text = "Not Saved";
         }
 
         private void OpenButton_Click(object sender, EventArgs e)
@@ -228,7 +283,7 @@ namespace Texty
             List<Triplet> list = null;
             if (ext.Equals(".c"))
             {
-                list = LangC.GetIndexesWithColor(content, 
+                list = LangC.GetIndexesWithColor(content,
                     Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
             }
             else if (ext.Equals(".cpp"))
@@ -248,6 +303,13 @@ namespace Texty
                 list = LangCSharp.GetIndexesWithColor(content,
                     Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
             }
+            else if (ext.Equals(".js"))
+            {
+                list = LangJS.GetIndexesWithColor(content,
+                    Color.Blue, Color.Gray, Color.Maroon);
+            }
+            else
+                return;
             
             ClearFormatting();
 
@@ -376,7 +438,7 @@ namespace Texty
         private void Contents_MultiKey(object sender, KeyEventArgs e)
         {
             if (e.Control == true && e.KeyCode == Keys.F)
-                FindBox.Focus();
+                ShowFind();
             else if (e.Control && e.KeyCode == Keys.Z)
                 Contents.Undo();
             else if (e.Control && e.KeyCode == Keys.Y)
@@ -398,12 +460,12 @@ namespace Texty
             }
             else
             {
-                if (Program.readmode)
+                if (Program.readmode && !e.Control)
                 {
-                    if (e.KeyCode != Keys.Up &&
-                        e.KeyCode != Keys.Down &&
-                        e.KeyCode != Keys.Right &&
-                        e.KeyCode != Keys.Left)
+                    if (e.KeyCode != Keys.Up && e.KeyCode != Keys.PageUp &&
+                        e.KeyCode != Keys.Down && e.KeyCode != Keys.PageDown &&
+                        e.KeyCode != Keys.Right && e.KeyCode != Keys.Home &&
+                        e.KeyCode != Keys.Left && e.KeyCode != Keys.End)
                     {
                         ModernDialog change = new ModernDialog("Change Mode ?",
                             "Document is read-only, change mode ?", "Change", "Dont");
@@ -420,6 +482,19 @@ namespace Texty
                     }
                 }
                 // TODO : Auto bracket completion.
+            }
+        }
+
+        private void ShowFind()
+        {
+            if (!FindReplacePanel.Visible)
+            {
+                Program.fromFindBox = true;
+                int width = Contents.DisplayRectangle.Right;
+                FindReplacePanel.Left = width - FindReplacePanel.Width;
+                FindReplacePanel.Visible = true;
+                ReplaceBox.Text = "";
+                FindBox.Focus();
             }
         }
 
@@ -502,7 +577,8 @@ namespace Texty
             Program.IsSaved = false;
             String[] words = Contents.Text.Split(' ');
             String[] lines = Contents.Text.Split('\n');
-            StatusLabel.Text = "Word Count : " + words.Length + " | Line Count : " + lines.Length;
+            WCStatusLabel.Text = "Words : " + words.Length;
+            LCStatusLabel.Text = "Lines : " + lines.Length;
             SaveStatus.Text = "Not Saved";
             Program.content = Contents.Text;
             if (Program.mode == Program.DEVELOPER)
@@ -559,6 +635,7 @@ namespace Texty
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             SystemExplorer.Nodes.Add(path);
             PopulateTree(path, SystemExplorer.Nodes[0]);
+            Contents.Focus();
         }
 
         private void del_Click(object sender, EventArgs e)
@@ -619,6 +696,7 @@ namespace Texty
             Program.mode = Program.TEXT;
             colorToolStripMenuItem.Enabled = true;
             alignmentrToolStripMenuItem.Enabled = true;
+            timeDateToolStripMenuItem.Enabled = true;
             Doc1.Text = "New";
             return true;
         }
@@ -690,16 +768,7 @@ namespace Texty
 
         private void FindReplace_Click(object sender, EventArgs e)
         {
-            try
-            {
-                IEnumerable<int> indexes = TextManipulation.AllIndexesOf(Program.content, FindBox.Text);
-                BeginUpdate();
-                SearchHighlight(FindBox.Text, indexes);
-                EndUpdate();
-            }
-            catch (ArgumentException exp)
-            {
-            }
+            Find();
         }
 
         public void SearchHighlight(string text, IEnumerable<int> indexes)
@@ -716,6 +785,7 @@ namespace Texty
 
         private void Contents_GotFocus(object sender, EventArgs e)
         {
+            FindReplacePanel.Visible = false;
             if (Program.fromFindBox)
             {
                 ClearFormatting();
@@ -754,9 +824,19 @@ namespace Texty
         {
             if (e.KeyCode == Keys.Enter)
             {
-                IEnumerable<int> indexes = TextManipulation.AllIndexesOf(Program.content, FindBox.Text);
-                SearchHighlight(FindBox.Text, indexes);
+                Find();
             }
+        }
+
+        private IEnumerable<int> Find()
+        {
+            IEnumerable<int> indexes;
+            if (MatchCaseBox.Checked)
+                indexes = TextManipulation.AllIndexesOf(Contents.Text, FindBox.Text);
+            else
+                indexes = TextManipulation.AllIndexesOfNoCase(Contents.Text, FindBox.Text);
+            SearchHighlight(FindBox.Text, indexes);
+            return indexes;
         }
 
         private void CutButton_Click(object sender, EventArgs e)
@@ -801,23 +881,15 @@ namespace Texty
 
         private void SystemExplorer_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            bool open = true;
-            if (Program.IsSaved == false)
-            {
-                var file = e.Node.FullPath;
-                if (Directory.Exists(file))
-                    return;
-                open = NewFile();
-                if (open)
-                {
-                    Contents.Text = File.ReadAllText(file);
-                    ProcessFile(Path.GetExtension(file));
-                    SetProperties(Path.GetExtension(file));
-                    Program.content = Contents.Text;
-                    Program.CurrentFile = Path.GetFileName(file);
-                }
-            }
-
+            var file = e.Node.FullPath;
+            if (Directory.Exists(file))
+                return;
+            SaveFile();
+            Contents.Text = File.ReadAllText(file);
+            ProcessFile(Path.GetExtension(file));
+            SetProperties(Path.GetExtension(file));
+            Program.content = Contents.Text;
+            Program.CurrentFile = Path.GetFileName(file);
         }
 
         private void CopyButton_Click(object sender, EventArgs e)
@@ -859,9 +931,23 @@ namespace Texty
             if (FindBox.Text.Length > 0 &&
                 ReplaceBox.Text.Length > 0)
             {
-                int index = Contents.Text.IndexOf(FindBox.Text);
-                Contents.Select(index, FindBox.Text.Length);
-                Contents.SelectedText = ReplaceBox.Text;
+                if (ReplaceAllBox.Checked)
+                {
+                    IEnumerable<int> indexes = Find();
+                    foreach (var index in indexes)
+                    {
+                        Contents.Select(index, FindBox.Text.Length);
+                        Contents.SelectedText = ReplaceBox.Text;
+                    }
+                }
+                else
+                {
+                    int index = Contents.Text.IndexOf(FindBox.Text);
+                    if (index < 0)
+                        return;
+                    Contents.Select(index, FindBox.Text.Length);
+                    Contents.SelectedText = ReplaceBox.Text;
+                }
             }
         }
 

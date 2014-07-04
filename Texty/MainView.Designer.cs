@@ -33,15 +33,42 @@ namespace Texty
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Contents = new System.Windows.Forms.RichTextBox();
-            this.StatusLabel = new System.Windows.Forms.Label();
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.SaveStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SaveTT = new System.Windows.Forms.ToolTip(this.components);
             this.SaveButton = new System.Windows.Forms.Button();
-            this.SystemExplorer = new System.Windows.Forms.TreeView();
+            this.ModeLabel = new System.Windows.Forms.Label();
+            this.Doc1 = new System.Windows.Forms.Label();
+            this.UnderlineButton = new System.Windows.Forms.Button();
+            this.ItalicsButton = new System.Windows.Forms.Button();
+            this.BoldButton = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
+            this.Minimise = new System.Windows.Forms.Button();
+            this.NewContent = new System.Windows.Forms.Button();
+            this.FontSelection = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.OpenButton = new System.Windows.Forms.Button();
+            this.FindTT = new System.Windows.Forms.ToolTip(this.components);
             this.FindBox = new System.Windows.Forms.TextBox();
+            this.ReplaceTT = new System.Windows.Forms.ToolTip(this.components);
+            this.ReplaceBox = new System.Windows.Forms.TextBox();
+            this.FontTT = new System.Windows.Forms.ToolTip(this.components);
+            this.OpenTT = new System.Windows.Forms.ToolTip(this.components);
+            this.NewTT = new System.Windows.Forms.ToolTip(this.components);
+            this.BoldTT = new System.Windows.Forms.ToolTip(this.components);
+            this.UnderlineTT = new System.Windows.Forms.ToolTip(this.components);
+            this.SettingsTT = new System.Windows.Forms.ToolTip(this.components);
+            this.MainContainer = new System.Windows.Forms.SplitContainer();
+            this.FindReplacePanel = new System.Windows.Forms.Panel();
+            this.ReplaceButton = new System.Windows.Forms.Button();
+            this.FindButton = new System.Windows.Forms.Button();
+            this.Contents = new System.Windows.Forms.RichTextBox();
+            this.SidePanelContainer = new System.Windows.Forms.SplitContainer();
+            this.SystemExplorer = new System.Windows.Forms.TreeView();
+            this.AppStatus = new System.Windows.Forms.StatusStrip();
+            this.WCStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LCStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SaveStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.TextyMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +94,7 @@ namespace Texty
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,58 +107,21 @@ namespace Texty
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ModeLabel = new System.Windows.Forms.Label();
-            this.ReplaceBox = new System.Windows.Forms.TextBox();
-            this.Doc1 = new System.Windows.Forms.Label();
-            this.UnderlineButton = new System.Windows.Forms.Button();
-            this.ItalicsButton = new System.Windows.Forms.Button();
-            this.BoldButton = new System.Windows.Forms.Button();
-            this.ReplaceButton = new System.Windows.Forms.Button();
-            this.CopyButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
-            this.FindButton = new System.Windows.Forms.Button();
-            this.PasteButton = new System.Windows.Forms.Button();
-            this.CutButton = new System.Windows.Forms.Button();
-            this.Minimise = new System.Windows.Forms.Button();
-            this.NewContent = new System.Windows.Forms.Button();
-            this.FontSelection = new System.Windows.Forms.Button();
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.OpenButton = new System.Windows.Forms.Button();
-            this.FindTT = new System.Windows.Forms.ToolTip(this.components);
-            this.ReplaceTT = new System.Windows.Forms.ToolTip(this.components);
-            this.FontTT = new System.Windows.Forms.ToolTip(this.components);
-            this.OpenTT = new System.Windows.Forms.ToolTip(this.components);
-            this.NewTT = new System.Windows.Forms.ToolTip(this.components);
-            this.BoldTT = new System.Windows.Forms.ToolTip(this.components);
-            this.UnderlineTT = new System.Windows.Forms.ToolTip(this.components);
-            this.SettingsTT = new System.Windows.Forms.ToolTip(this.components);
-            this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.MatchCaseBox = new System.Windows.Forms.CheckBox();
+            this.ReplaceAllBox = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
+            this.MainContainer.Panel1.SuspendLayout();
+            this.MainContainer.Panel2.SuspendLayout();
+            this.MainContainer.SuspendLayout();
+            this.FindReplacePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SidePanelContainer)).BeginInit();
+            this.SidePanelContainer.Panel2.SuspendLayout();
+            this.SidePanelContainer.SuspendLayout();
+            this.AppStatus.SuspendLayout();
             this.TextyMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Contents
-            // 
-            this.Contents.AcceptsTab = true;
-            this.Contents.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Contents.DetectUrls = false;
-            this.Contents.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Contents.HideSelection = false;
-            this.Contents.Location = new System.Drawing.Point(5, 91);
-            this.Contents.Name = "Contents";
-            this.Contents.Size = new System.Drawing.Size(837, 485);
-            this.Contents.TabIndex = 0;
-            this.Contents.Text = "";
-            this.Contents.WordWrap = false;
-            this.Contents.TextChanged += new System.EventHandler(this.Contents_TextChanged);
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(12, 596);
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(0, 21);
-            this.StatusLabel.TabIndex = 5;
             // 
             // fontDialog
             // 
@@ -138,21 +129,12 @@ namespace Texty
             this.fontDialog.ShowApply = true;
             this.fontDialog.ShowColor = true;
             // 
-            // SaveStatus
-            // 
-            this.SaveStatus.AutoSize = true;
-            this.SaveStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveStatus.Location = new System.Drawing.Point(384, 596);
-            this.SaveStatus.Name = "SaveStatus";
-            this.SaveStatus.Size = new System.Drawing.Size(0, 21);
-            this.SaveStatus.TabIndex = 8;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(12, -4);
+            this.label1.Location = new System.Drawing.Point(13, -4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 65);
             this.label1.TabIndex = 9;
@@ -179,354 +161,6 @@ namespace Texty
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // SystemExplorer
-            // 
-            this.SystemExplorer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SystemExplorer.Location = new System.Drawing.Point(849, 91);
-            this.SystemExplorer.Name = "SystemExplorer";
-            this.SystemExplorer.Size = new System.Drawing.Size(204, 485);
-            this.SystemExplorer.TabIndex = 15;
-            this.SystemExplorer.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SystemExplorer_AfterSelect);
-            // 
-            // FindBox
-            // 
-            this.FindBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FindBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindBox.Location = new System.Drawing.Point(529, 594);
-            this.FindBox.Name = "FindBox";
-            this.FindBox.Size = new System.Drawing.Size(177, 22);
-            this.FindBox.TabIndex = 18;
-            this.FindTT.SetToolTip(this.FindBox, "Search in Text");
-            this.FindBox.TextChanged += new System.EventHandler(this.FindBox_TextChanged);
-            // 
-            // TextyMenu
-            // 
-            this.TextyMenu.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.TextyMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.TextyMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TextyMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.TextyMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.formatToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.TextyMenu.Location = new System.Drawing.Point(16, 67);
-            this.TextyMenu.Name = "TextyMenu";
-            this.TextyMenu.Size = new System.Drawing.Size(343, 25);
-            this.TextyMenu.TabIndex = 22;
-            this.TextyMenu.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.newToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.printToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(40, 21);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.printToolStripMenuItem.Text = "&Print";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(106, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.copyToolStripMenuItem,
-            this.cutToolStripMenuItem,
-            this.delToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.findToolStripMenuItem,
-            this.replaceToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.timeDateToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(43, 21);
-            this.editToolStripMenuItem.Text = "&Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click_1);
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Image = global::Texty.Properties.Resources.undo;
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.undoToolStripMenuItem.Text = "U&ndo";
-            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Image = global::Texty.Properties.Resources.redo;
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.redoToolStripMenuItem.Text = "Red&o";
-            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(135, 6);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Enabled = false;
-            this.copyToolStripMenuItem.Image = global::Texty.Properties.Resources.duplicate;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Enabled = false;
-            this.cutToolStripMenuItem.Image = global::Texty.Properties.Resources.cut;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.cutToolStripMenuItem.Text = "C&ut";
-            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
-            // 
-            // delToolStripMenuItem
-            // 
-            this.delToolStripMenuItem.Enabled = false;
-            this.delToolStripMenuItem.Image = global::Texty.Properties.Resources.trash;
-            this.delToolStripMenuItem.Name = "delToolStripMenuItem";
-            this.delToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.delToolStripMenuItem.Text = "Delete";
-            this.delToolStripMenuItem.Click += new System.EventHandler(this.delToolStripMenuItem_Click);
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = global::Texty.Properties.Resources.paste;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(135, 6);
-            // 
-            // findToolStripMenuItem
-            // 
-            this.findToolStripMenuItem.Image = global::Texty.Properties.Resources.find;
-            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.findToolStripMenuItem.Text = "Fin&d";
-            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
-            // 
-            // replaceToolStripMenuItem
-            // 
-            this.replaceToolStripMenuItem.Image = global::Texty.Properties.Resources._ref;
-            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.replaceToolStripMenuItem.Text = "Rep&lace";
-            this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(135, 6);
-            // 
-            // timeDateToolStripMenuItem
-            // 
-            this.timeDateToolStripMenuItem.Image = global::Texty.Properties.Resources.time;
-            this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
-            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.timeDateToolStripMenuItem.Text = "&Time/Date";
-            this.timeDateToolStripMenuItem.Click += new System.EventHandler(this.timeDateToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zoomToolStripMenuItem,
-            this.zoomOutToolStripMenuItem,
-            this.readOnlyToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
-            this.viewToolStripMenuItem.Text = "Vi&ew";
-            // 
-            // zoomToolStripMenuItem
-            // 
-            this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
-            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.zoomToolStripMenuItem.Text = "&Zoom In";
-            this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
-            // 
-            // zoomOutToolStripMenuItem
-            // 
-            this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
-            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
-            this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
-            // 
-            // formatToolStripMenuItem
-            // 
-            this.formatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fontToolStripMenuItem,
-            this.colorToolStripMenuItem,
-            this.alignmentrToolStripMenuItem});
-            this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
-            this.formatToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
-            this.formatToolStripMenuItem.Text = "&Format";
-            this.formatToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // fontToolStripMenuItem
-            // 
-            this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
-            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.fontToolStripMenuItem.Text = "Fon&t";
-            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.foregroundToolStripMenuItem,
-            this.backgroundToolStripMenuItem});
-            this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.colorToolStripMenuItem.Text = "Co&lor";
-            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
-            // 
-            // foregroundToolStripMenuItem
-            // 
-            this.foregroundToolStripMenuItem.Image = global::Texty.Properties.Resources.fore;
-            this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
-            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.foregroundToolStripMenuItem.Text = "&Foreground";
-            this.foregroundToolStripMenuItem.Click += new System.EventHandler(this.foregroundToolStripMenuItem_Click);
-            // 
-            // backgroundToolStripMenuItem
-            // 
-            this.backgroundToolStripMenuItem.Image = global::Texty.Properties.Resources.bg;
-            this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.backgroundToolStripMenuItem.Text = "&Background";
-            this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
-            // 
-            // alignmentrToolStripMenuItem
-            // 
-            this.alignmentrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rightAlignToolStripMenuItem,
-            this.leftAlignToolStripMenuItem,
-            this.centerAlignToolStripMenuItem});
-            this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
-            this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
-            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.alignmentrToolStripMenuItem.Text = "&Alignment";
-            this.alignmentrToolStripMenuItem.Click += new System.EventHandler(this.alignmentrToolStripMenuItem_Click);
-            // 
-            // rightAlignToolStripMenuItem
-            // 
-            this.rightAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_right_256;
-            this.rightAlignToolStripMenuItem.Name = "rightAlignToolStripMenuItem";
-            this.rightAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.rightAlignToolStripMenuItem.Text = "&Right Align";
-            this.rightAlignToolStripMenuItem.Click += new System.EventHandler(this.rightAlignToolStripMenuItem_Click);
-            // 
-            // leftAlignToolStripMenuItem
-            // 
-            this.leftAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_center_256;
-            this.leftAlignToolStripMenuItem.Name = "leftAlignToolStripMenuItem";
-            this.leftAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.leftAlignToolStripMenuItem.Text = "&Left Align";
-            this.leftAlignToolStripMenuItem.Click += new System.EventHandler(this.leftAlignToolStripMenuItem_Click);
-            // 
-            // centerAlignToolStripMenuItem
-            // 
-            this.centerAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_left_256;
-            this.centerAlignToolStripMenuItem.Name = "centerAlignToolStripMenuItem";
-            this.centerAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.centerAlignToolStripMenuItem.Text = "&Center Align";
-            this.centerAlignToolStripMenuItem.Click += new System.EventHandler(this.centerAlignToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.creditsToolStripMenuItem,
-            this.aboutToolStripMenuItem1});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
-            this.aboutToolStripMenuItem.Text = "&Help";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // creditsToolStripMenuItem
-            // 
-            this.creditsToolStripMenuItem.Image = global::Texty.Properties.Resources.credits;
-            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.creditsToolStripMenuItem.Text = "C&redits";
-            this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Image = global::Texty.Properties.Resources.about;
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
-            this.aboutToolStripMenuItem1.Text = "A&bout";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
             // ModeLabel
             // 
             this.ModeLabel.AutoSize = true;
@@ -535,17 +169,6 @@ namespace Texty
             this.ModeLabel.Name = "ModeLabel";
             this.ModeLabel.Size = new System.Drawing.Size(0, 13);
             this.ModeLabel.TabIndex = 23;
-            // 
-            // ReplaceBox
-            // 
-            this.ReplaceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ReplaceBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReplaceBox.Location = new System.Drawing.Point(727, 593);
-            this.ReplaceBox.Name = "ReplaceBox";
-            this.ReplaceBox.Size = new System.Drawing.Size(177, 22);
-            this.ReplaceBox.TabIndex = 25;
-            this.ReplaceTT.SetToolTip(this.ReplaceBox, "Replace Text");
-            this.ReplaceBox.TextChanged += new System.EventHandler(this.ReplaceBox_TextChanged);
             // 
             // Doc1
             // 
@@ -605,39 +228,6 @@ namespace Texty
             this.BoldButton.UseVisualStyleBackColor = true;
             this.BoldButton.Click += new System.EventHandler(this.BoldButton_Click);
             // 
-            // ReplaceButton
-            // 
-            this.ReplaceButton.BackColor = System.Drawing.Color.White;
-            this.ReplaceButton.BackgroundImage = global::Texty.Properties.Resources._ref;
-            this.ReplaceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ReplaceButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ReplaceButton.Enabled = false;
-            this.ReplaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ReplaceButton.FlatAppearance.BorderSize = 0;
-            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReplaceButton.Location = new System.Drawing.Point(885, 594);
-            this.ReplaceButton.Name = "ReplaceButton";
-            this.ReplaceButton.Size = new System.Drawing.Size(19, 21);
-            this.ReplaceButton.TabIndex = 24;
-            this.ReplaceButton.UseVisualStyleBackColor = false;
-            this.ReplaceButton.Click += new System.EventHandler(this.ReplaceButton_Click);
-            // 
-            // CopyButton
-            // 
-            this.CopyButton.BackgroundImage = global::Texty.Properties.Resources.duplicate;
-            this.CopyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CopyButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CopyButton.Enabled = false;
-            this.CopyButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.CopyButton.FlatAppearance.BorderSize = 0;
-            this.CopyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CopyButton.Location = new System.Drawing.Point(919, 582);
-            this.CopyButton.Name = "CopyButton";
-            this.CopyButton.Size = new System.Drawing.Size(44, 39);
-            this.CopyButton.TabIndex = 21;
-            this.CopyButton.UseVisualStyleBackColor = true;
-            this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
-            // 
             // SettingsButton
             // 
             this.SettingsButton.BackgroundImage = global::Texty.Properties.Resources.settings;
@@ -652,50 +242,6 @@ namespace Texty
             this.SettingsTT.SetToolTip(this.SettingsButton, "Open settings panel");
             this.SettingsButton.UseVisualStyleBackColor = true;
             this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
-            // 
-            // FindButton
-            // 
-            this.FindButton.BackColor = System.Drawing.Color.White;
-            this.FindButton.BackgroundImage = global::Texty.Properties.Resources.find;
-            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FindButton.Enabled = false;
-            this.FindButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.FindButton.FlatAppearance.BorderSize = 0;
-            this.FindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FindButton.Location = new System.Drawing.Point(702, 594);
-            this.FindButton.Name = "FindButton";
-            this.FindButton.Size = new System.Drawing.Size(19, 22);
-            this.FindButton.TabIndex = 11;
-            this.FindButton.UseVisualStyleBackColor = false;
-            this.FindButton.Click += new System.EventHandler(this.FindReplace_Click);
-            // 
-            // PasteButton
-            // 
-            this.PasteButton.BackgroundImage = global::Texty.Properties.Resources.paste;
-            this.PasteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PasteButton.FlatAppearance.BorderSize = 0;
-            this.PasteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PasteButton.Location = new System.Drawing.Point(1007, 584);
-            this.PasteButton.Name = "PasteButton";
-            this.PasteButton.Size = new System.Drawing.Size(50, 33);
-            this.PasteButton.TabIndex = 17;
-            this.PasteButton.UseVisualStyleBackColor = true;
-            this.PasteButton.Click += new System.EventHandler(this.PasteButton_Click);
-            // 
-            // CutButton
-            // 
-            this.CutButton.BackgroundImage = global::Texty.Properties.Resources.cut;
-            this.CutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CutButton.Enabled = false;
-            this.CutButton.FlatAppearance.BorderSize = 0;
-            this.CutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CutButton.Location = new System.Drawing.Point(962, 584);
-            this.CutButton.Name = "CutButton";
-            this.CutButton.Size = new System.Drawing.Size(50, 33);
-            this.CutButton.TabIndex = 16;
-            this.CutButton.UseVisualStyleBackColor = true;
-            this.CutButton.Click += new System.EventHandler(this.CutButton_Click);
             // 
             // Minimise
             // 
@@ -779,10 +325,30 @@ namespace Texty
             this.FindTT.AutomaticDelay = 0;
             this.FindTT.IsBalloon = true;
             // 
+            // FindBox
+            // 
+            this.FindBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FindBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindBox.Location = new System.Drawing.Point(3, 7);
+            this.FindBox.Name = "FindBox";
+            this.FindBox.Size = new System.Drawing.Size(218, 22);
+            this.FindBox.TabIndex = 20;
+            this.FindTT.SetToolTip(this.FindBox, "Search in Text");
+            // 
             // ReplaceTT
             // 
             this.ReplaceTT.AutomaticDelay = 0;
             this.ReplaceTT.IsBalloon = true;
+            // 
+            // ReplaceBox
+            // 
+            this.ReplaceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReplaceBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceBox.Location = new System.Drawing.Point(3, 35);
+            this.ReplaceBox.Name = "ReplaceBox";
+            this.ReplaceBox.Size = new System.Drawing.Size(218, 22);
+            this.ReplaceBox.TabIndex = 27;
+            this.ReplaceTT.SetToolTip(this.ReplaceBox, "Replace Text");
             // 
             // FontTT
             // 
@@ -814,48 +380,526 @@ namespace Texty
             this.SettingsTT.AutomaticDelay = 0;
             this.SettingsTT.IsBalloon = true;
             // 
+            // MainContainer
+            // 
+            this.MainContainer.Location = new System.Drawing.Point(5, 91);
+            this.MainContainer.Name = "MainContainer";
+            // 
+            // MainContainer.Panel1
+            // 
+            this.MainContainer.Panel1.Controls.Add(this.FindReplacePanel);
+            this.MainContainer.Panel1.Controls.Add(this.Contents);
+            // 
+            // MainContainer.Panel2
+            // 
+            this.MainContainer.Panel2.Controls.Add(this.SidePanelContainer);
+            this.MainContainer.Size = new System.Drawing.Size(1052, 485);
+            this.MainContainer.SplitterDistance = 812;
+            this.MainContainer.TabIndex = 30;
+            // 
+            // FindReplacePanel
+            // 
+            this.FindReplacePanel.Controls.Add(this.ReplaceAllBox);
+            this.FindReplacePanel.Controls.Add(this.MatchCaseBox);
+            this.FindReplacePanel.Controls.Add(this.ReplaceButton);
+            this.FindReplacePanel.Controls.Add(this.ReplaceBox);
+            this.FindReplacePanel.Controls.Add(this.FindButton);
+            this.FindReplacePanel.Controls.Add(this.FindBox);
+            this.FindReplacePanel.Location = new System.Drawing.Point(588, 0);
+            this.FindReplacePanel.Name = "FindReplacePanel";
+            this.FindReplacePanel.Size = new System.Drawing.Size(224, 92);
+            this.FindReplacePanel.TabIndex = 2;
+            this.FindReplacePanel.Visible = false;
+            // 
+            // ReplaceButton
+            // 
+            this.ReplaceButton.BackColor = System.Drawing.Color.White;
+            this.ReplaceButton.BackgroundImage = global::Texty.Properties.Resources._ref;
+            this.ReplaceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ReplaceButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReplaceButton.Enabled = false;
+            this.ReplaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ReplaceButton.FlatAppearance.BorderSize = 0;
+            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceButton.Location = new System.Drawing.Point(202, 35);
+            this.ReplaceButton.Name = "ReplaceButton";
+            this.ReplaceButton.Size = new System.Drawing.Size(19, 21);
+            this.ReplaceButton.TabIndex = 26;
+            this.ReplaceButton.UseVisualStyleBackColor = false;
+            // 
+            // FindButton
+            // 
+            this.FindButton.BackColor = System.Drawing.Color.White;
+            this.FindButton.BackgroundImage = global::Texty.Properties.Resources.find;
+            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FindButton.Enabled = false;
+            this.FindButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FindButton.FlatAppearance.BorderSize = 0;
+            this.FindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FindButton.Location = new System.Drawing.Point(202, 7);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Size = new System.Drawing.Size(19, 22);
+            this.FindButton.TabIndex = 19;
+            this.FindButton.UseVisualStyleBackColor = false;
+            // 
+            // Contents
+            // 
+            this.Contents.AcceptsTab = true;
+            this.Contents.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Contents.DetectUrls = false;
+            this.Contents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Contents.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Contents.HideSelection = false;
+            this.Contents.Location = new System.Drawing.Point(0, 0);
+            this.Contents.Name = "Contents";
+            this.Contents.Size = new System.Drawing.Size(812, 485);
+            this.Contents.TabIndex = 1;
+            this.Contents.Text = "";
+            this.Contents.WordWrap = false;
+            // 
+            // SidePanelContainer
+            // 
+            this.SidePanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SidePanelContainer.Location = new System.Drawing.Point(0, 0);
+            this.SidePanelContainer.Name = "SidePanelContainer";
+            this.SidePanelContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // SidePanelContainer.Panel2
+            // 
+            this.SidePanelContainer.Panel2.Controls.Add(this.SystemExplorer);
+            this.SidePanelContainer.Size = new System.Drawing.Size(236, 485);
+            this.SidePanelContainer.SplitterDistance = 242;
+            this.SidePanelContainer.TabIndex = 17;
+            // 
+            // SystemExplorer
+            // 
+            this.SystemExplorer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SystemExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SystemExplorer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SystemExplorer.Location = new System.Drawing.Point(0, 0);
+            this.SystemExplorer.Name = "SystemExplorer";
+            this.SystemExplorer.Size = new System.Drawing.Size(236, 239);
+            this.SystemExplorer.TabIndex = 17;
+            // 
+            // AppStatus
+            // 
+            this.AppStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.AppStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.WCStatusLabel,
+            this.LCStatusLabel,
+            this.SaveStatus});
+            this.AppStatus.Location = new System.Drawing.Point(0, 587);
+            this.AppStatus.Name = "AppStatus";
+            this.AppStatus.Size = new System.Drawing.Size(1061, 22);
+            this.AppStatus.TabIndex = 31;
+            // 
+            // WCStatusLabel
+            // 
+            this.WCStatusLabel.Name = "WCStatusLabel";
+            this.WCStatusLabel.Size = new System.Drawing.Size(55, 17);
+            this.WCStatusLabel.Text = "Words :";
+            // 
+            // LCStatusLabel
+            // 
+            this.LCStatusLabel.Name = "LCStatusLabel";
+            this.LCStatusLabel.Size = new System.Drawing.Size(49, 17);
+            this.LCStatusLabel.Text = "Lines : ";
+            // 
+            // SaveStatus
+            // 
+            this.SaveStatus.Name = "SaveStatus";
+            this.SaveStatus.Size = new System.Drawing.Size(35, 17);
+            this.SaveStatus.Text = "New";
+            // 
+            // TextyMenu
+            // 
+            this.TextyMenu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TextyMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.TextyMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TextyMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.TextyMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.formatToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.TextyMenu.Location = new System.Drawing.Point(5, 63);
+            this.TextyMenu.Name = "TextyMenu";
+            this.TextyMenu.Size = new System.Drawing.Size(251, 25);
+            this.TextyMenu.TabIndex = 32;
+            this.TextyMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.newToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.printToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(40, 21);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.copyToolStripMenuItem,
+            this.cutToolStripMenuItem,
+            this.delToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.findToolStripMenuItem,
+            this.replaceToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.timeDateToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(43, 21);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Image = global::Texty.Properties.Resources.undo;
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.undoToolStripMenuItem.Text = "U&ndo";
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Image = global::Texty.Properties.Resources.redo;
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.redoToolStripMenuItem.Text = "Red&o";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(135, 6);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Enabled = false;
+            this.copyToolStripMenuItem.Image = global::Texty.Properties.Resources.duplicate;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.copyToolStripMenuItem.Text = "&Copy";
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Enabled = false;
+            this.cutToolStripMenuItem.Image = global::Texty.Properties.Resources.cut;
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cutToolStripMenuItem.Text = "C&ut";
+            // 
+            // delToolStripMenuItem
+            // 
+            this.delToolStripMenuItem.Enabled = false;
+            this.delToolStripMenuItem.Image = global::Texty.Properties.Resources.trash;
+            this.delToolStripMenuItem.Name = "delToolStripMenuItem";
+            this.delToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.delToolStripMenuItem.Text = "Delete";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Image = global::Texty.Properties.Resources.paste;
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.pasteToolStripMenuItem.Text = "&Paste";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(135, 6);
+            // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.Image = global::Texty.Properties.Resources.find;
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.findToolStripMenuItem.Text = "Fin&d";
+            // 
+            // replaceToolStripMenuItem
+            // 
+            this.replaceToolStripMenuItem.Image = global::Texty.Properties.Resources._ref;
+            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.replaceToolStripMenuItem.Text = "Rep&lace";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(135, 6);
+            // 
+            // timeDateToolStripMenuItem
+            // 
+            this.timeDateToolStripMenuItem.Image = global::Texty.Properties.Resources.time;
+            this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
+            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.timeDateToolStripMenuItem.Text = "&Time/Date";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoomToolStripMenuItem,
+            this.zoomOutToolStripMenuItem,
+            this.readOnlyToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
+            this.viewToolStripMenuItem.Text = "Vi&ew";
+            // 
+            // zoomToolStripMenuItem
+            // 
+            this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
+            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomToolStripMenuItem.Text = "&Zoom In";
+            // 
+            // zoomOutToolStripMenuItem
+            // 
+            this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
+            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
+            // 
             // readOnlyToolStripMenuItem
             // 
             this.readOnlyToolStripMenuItem.Name = "readOnlyToolStripMenuItem";
-            this.readOnlyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.readOnlyToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.readOnlyToolStripMenuItem.Text = "&Read Only";
+            // 
+            // formatToolStripMenuItem
+            // 
+            this.formatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontToolStripMenuItem,
+            this.colorToolStripMenuItem,
+            this.alignmentrToolStripMenuItem});
+            this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
+            this.formatToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.formatToolStripMenuItem.Text = "&Format";
+            // 
+            // fontToolStripMenuItem
+            // 
+            this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
+            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontToolStripMenuItem.Text = "Fon&t";
+            // 
+            // colorToolStripMenuItem
+            // 
+            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foregroundToolStripMenuItem,
+            this.backgroundToolStripMenuItem});
+            this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
+            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colorToolStripMenuItem.Text = "Co&lor";
+            // 
+            // foregroundToolStripMenuItem
+            // 
+            this.foregroundToolStripMenuItem.Image = global::Texty.Properties.Resources.fore;
+            this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
+            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.foregroundToolStripMenuItem.Text = "&Foreground";
+            // 
+            // backgroundToolStripMenuItem
+            // 
+            this.backgroundToolStripMenuItem.Image = global::Texty.Properties.Resources.bg;
+            this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backgroundToolStripMenuItem.Text = "&Background";
+            // 
+            // alignmentrToolStripMenuItem
+            // 
+            this.alignmentrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rightAlignToolStripMenuItem,
+            this.leftAlignToolStripMenuItem,
+            this.centerAlignToolStripMenuItem});
+            this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
+            this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
+            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alignmentrToolStripMenuItem.Text = "&Alignment";
+            // 
+            // rightAlignToolStripMenuItem
+            // 
+            this.rightAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_right_256;
+            this.rightAlignToolStripMenuItem.Name = "rightAlignToolStripMenuItem";
+            this.rightAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.rightAlignToolStripMenuItem.Text = "&Right Align";
+            // 
+            // leftAlignToolStripMenuItem
+            // 
+            this.leftAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_center_256;
+            this.leftAlignToolStripMenuItem.Name = "leftAlignToolStripMenuItem";
+            this.leftAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.leftAlignToolStripMenuItem.Text = "&Left Align";
+            // 
+            // centerAlignToolStripMenuItem
+            // 
+            this.centerAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_left_256;
+            this.centerAlignToolStripMenuItem.Name = "centerAlignToolStripMenuItem";
+            this.centerAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.centerAlignToolStripMenuItem.Text = "&Center Align";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.creditsToolStripMenuItem,
+            this.aboutToolStripMenuItem1});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
+            this.aboutToolStripMenuItem.Text = "&Help";
+            // 
+            // creditsToolStripMenuItem
+            // 
+            this.creditsToolStripMenuItem.Image = global::Texty.Properties.Resources.credits;
+            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.creditsToolStripMenuItem.Text = "C&redits";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Image = global::Texty.Properties.Resources.about;
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
+            this.aboutToolStripMenuItem1.Text = "A&bout";
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(1061, 609);
+            this.shapeContainer1.TabIndex = 33;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.FillColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.rectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.rectangleShape1.Location = new System.Drawing.Point(1, 12);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(9, 39);
+            // 
+            // MatchCaseBox
+            // 
+            this.MatchCaseBox.AutoSize = true;
+            this.MatchCaseBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MatchCaseBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MatchCaseBox.Location = new System.Drawing.Point(18, 63);
+            this.MatchCaseBox.Name = "MatchCaseBox";
+            this.MatchCaseBox.Size = new System.Drawing.Size(94, 21);
+            this.MatchCaseBox.TabIndex = 28;
+            this.MatchCaseBox.Text = "Match Case";
+            this.MatchCaseBox.UseVisualStyleBackColor = true;
+            // 
+            // ReplaceAllBox
+            // 
+            this.ReplaceAllBox.AutoSize = true;
+            this.ReplaceAllBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceAllBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceAllBox.Location = new System.Drawing.Point(116, 63);
+            this.ReplaceAllBox.Name = "ReplaceAllBox";
+            this.ReplaceAllBox.Size = new System.Drawing.Size(89, 21);
+            this.ReplaceAllBox.TabIndex = 29;
+            this.ReplaceAllBox.Text = "Replace All";
+            this.ReplaceAllBox.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1061, 627);
-            this.Controls.Add(this.ReplaceButton);
-            this.Controls.Add(this.FindButton);
+            this.ClientSize = new System.Drawing.Size(1061, 609);
+            this.Controls.Add(this.TextyMenu);
+            this.Controls.Add(this.AppStatus);
+            this.Controls.Add(this.MainContainer);
             this.Controls.Add(this.UnderlineButton);
             this.Controls.Add(this.ItalicsButton);
             this.Controls.Add(this.BoldButton);
-            this.Controls.Add(this.ReplaceBox);
             this.Controls.Add(this.ModeLabel);
-            this.Controls.Add(this.CopyButton);
             this.Controls.Add(this.SettingsButton);
-            this.Controls.Add(this.FindBox);
-            this.Controls.Add(this.PasteButton);
-            this.Controls.Add(this.CutButton);
-            this.Controls.Add(this.SystemExplorer);
             this.Controls.Add(this.Doc1);
-            this.Controls.Add(this.Contents);
             this.Controls.Add(this.Minimise);
-            this.Controls.Add(this.SaveStatus);
             this.Controls.Add(this.NewContent);
             this.Controls.Add(this.FontSelection);
-            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.TextyMenu);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.shapeContainer1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.TextyMenu;
             this.Name = "MainView";
             this.Text = "Texty";
             this.Load += new System.EventHandler(this.MainView_Load);
+            this.MainContainer.Panel1.ResumeLayout(false);
+            this.MainContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
+            this.MainContainer.ResumeLayout(false);
+            this.FindReplacePanel.ResumeLayout(false);
+            this.FindReplacePanel.PerformLayout();
+            this.SidePanelContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SidePanelContainer)).EndInit();
+            this.SidePanelContainer.ResumeLayout(false);
+            this.AppStatus.ResumeLayout(false);
+            this.AppStatus.PerformLayout();
             this.TextyMenu.ResumeLayout(false);
             this.TextyMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -923,73 +967,23 @@ namespace Texty
             SendMessage(Contents.Handle, WM_SETREDRAW, 1, 0);
             SendMessage(Contents.Handle, EM_SETEVENTMASK, 0, OldEventMask);
         }
-
-
-        public System.Windows.Forms.RichTextBox Contents;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.Button FontSelection;
         private System.Windows.Forms.Button NewContent;
-        private System.Windows.Forms.Label SaveStatus;
         private System.Windows.Forms.Label label1;
         private Button Minimise;
-        private Button FindButton;
         private ToolTip SaveTT;
-        private TreeView SystemExplorer;
-        private Button CutButton;
-        private Button PasteButton;
-        private TextBox FindBox;
         private Button SettingsButton;
-        private Button CopyButton;
-        private MenuStrip TextyMenu;
         private Label ModeLabel;
-        private Button ReplaceButton;
-        private TextBox ReplaceBox;
-        private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem formatToolStripMenuItem;
-        private ToolStripMenuItem viewToolStripMenuItem;
-        private ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStripMenuItem newToolStripMenuItem;
-        private ToolStripMenuItem exitToolStripMenuItem;
-        private ToolStripMenuItem fontToolStripMenuItem;
-        private ToolStripMenuItem colorToolStripMenuItem;
-        private ToolStripMenuItem openToolStripMenuItem;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem copyToolStripMenuItem;
-        private ToolStripMenuItem cutToolStripMenuItem;
-        private ToolStripMenuItem pasteToolStripMenuItem;
-        private ToolStripMenuItem findToolStripMenuItem;
-        private ToolStripMenuItem replaceToolStripMenuItem;
-        private ToolStripMenuItem zoomToolStripMenuItem;
-        private ToolStripMenuItem creditsToolStripMenuItem;
         //private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Label Doc1;
-        private ToolStripMenuItem aboutToolStripMenuItem1;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem printToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem zoomOutToolStripMenuItem;
-        private ToolStripMenuItem undoToolStripMenuItem;
-        private ToolStripMenuItem redoToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripSeparator toolStripSeparator4;
-        private ToolStripMenuItem alignmentrToolStripMenuItem;
-        private ToolStripMenuItem rightAlignToolStripMenuItem;
-        private ToolStripMenuItem leftAlignToolStripMenuItem;
-        private ToolStripMenuItem centerAlignToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripMenuItem timeDateToolStripMenuItem;
-        private ToolStripMenuItem foregroundToolStripMenuItem;
-        private ToolStripMenuItem backgroundToolStripMenuItem;
         private Button BoldButton;
         private Button ItalicsButton;
         private Button UnderlineButton;
-        private ToolStripMenuItem delToolStripMenuItem;
         private ToolTip FindTT;
         private ToolTip ReplaceTT;
         private ToolTip FontTT;
@@ -998,7 +992,61 @@ namespace Texty
         private ToolTip BoldTT;
         private ToolTip UnderlineTT;
         private ToolTip SettingsTT;
+        private SplitContainer MainContainer;
+        public RichTextBox Contents;
+        private SplitContainer SidePanelContainer;
+        private TreeView SystemExplorer;
+        private Panel FindReplacePanel;
+        private Button FindButton;
+        private TextBox FindBox;
+        private Button ReplaceButton;
+        private TextBox ReplaceBox;
+        private StatusStrip AppStatus;
+        private ToolStripStatusLabel WCStatusLabel;
+        private ToolStripStatusLabel LCStatusLabel;
+        private ToolStripStatusLabel SaveStatus;
+        private MenuStrip TextyMenu;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem newToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem printToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem undoToolStripMenuItem;
+        private ToolStripMenuItem redoToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem cutToolStripMenuItem;
+        private ToolStripMenuItem delToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem findToolStripMenuItem;
+        private ToolStripMenuItem replaceToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem timeDateToolStripMenuItem;
+        private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem zoomToolStripMenuItem;
+        private ToolStripMenuItem zoomOutToolStripMenuItem;
         private ToolStripMenuItem readOnlyToolStripMenuItem;
+        private ToolStripMenuItem formatToolStripMenuItem;
+        private ToolStripMenuItem fontToolStripMenuItem;
+        private ToolStripMenuItem colorToolStripMenuItem;
+        private ToolStripMenuItem foregroundToolStripMenuItem;
+        private ToolStripMenuItem backgroundToolStripMenuItem;
+        private ToolStripMenuItem alignmentrToolStripMenuItem;
+        private ToolStripMenuItem rightAlignToolStripMenuItem;
+        private ToolStripMenuItem leftAlignToolStripMenuItem;
+        private ToolStripMenuItem centerAlignToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem creditsToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem1;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        private CheckBox MatchCaseBox;
+        private CheckBox ReplaceAllBox;
     }
 }
 
