@@ -283,6 +283,26 @@ namespace Texty.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap overview_pages_1_256 {
+            get {
+                object obj = ResourceManager.GetObject("overview_pages_1-256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap overview_pages_1_2561 {
+            get {
+                object obj = ResourceManager.GetObject("overview_pages_1-2561", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paint_palette_256 {
             get {
                 object obj = ResourceManager.GetObject("paint_palette-256", resourceCulture);

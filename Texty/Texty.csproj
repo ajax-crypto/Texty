@@ -80,6 +80,7 @@
     <Compile Include="CriticalError.Designer.cs">
       <DependentUpon>CriticalError.cs</DependentUpon>
     </Compile>
+    <Compile Include="History.cs" />
     <Compile Include="LangC.cs" />
     <Compile Include="LangCPP.cs" />
     <Compile Include="LangCSharp.cs" />
@@ -189,6 +190,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\overview_pages_1-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\overview_pages_1-2561.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

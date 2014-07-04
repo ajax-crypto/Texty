@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Texty
@@ -40,6 +38,7 @@ namespace Texty
             this.openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             this.printToolStripMenuItem.Click += printToolStripMenuItem_Click;
             this.exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            this.recentToolStripMenuItem.DropDownOpening += recentToolStripMenuItem_DropDownOpening;
 
             this.editToolStripMenuItem.DropDownOpening += editToolStripMenuItem_DropDownOpening;
             this.undoToolStripMenuItem.Click += undoToolStripMenuItem_Click;
@@ -65,6 +64,51 @@ namespace Texty
 
             Program.settings = Settings.GetSettingsObject();
             UpdateSettings();
+        }
+
+        private void recentToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            List<string> names = History.FetchFileList();
+            foreach (string name in names)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = Path.GetFileNameWithoutExtension(name);
+                item.Image = Texty.Properties.Resources.overview_pages_1_256;
+                item.Click += delegate(object _sender, EventArgs _e)
+                {
+                    OpenFile(name);
+                };
+                recentToolStripMenuItem.DropDownItems.Add(item);
+            }
+        }
+
+        private void OpenFile(string name)
+        {
+            if (!File.Exists(name))
+                return;
+            if (!Program.IsSaved)
+            {
+                ModernDialog dialog = new ModernDialog("Save Existing ?", "Save the existing changes ?", "Dont", "Save");
+                dialog.ShowDialog();
+                switch (dialog.result)
+                {
+                    case ModernDialog.LEFT:
+                        break;
+                    case ModernDialog.CENTER:
+                        bool result = SaveFile();
+                        if (!result)
+                            return;
+                        break;
+                    case ModernDialog.CANCEL:
+                        return;
+                }
+            }
+            ReadToApplication(name);
+            SetProperties(Path.GetExtension(name));
+            ProcessFile(Path.GetExtension(name));
+            Program.content = Contents.Text;
+            Program.CurrentFile = Path.GetFileName(name);
+            History.Add(name);
         }
 
         private void editToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -164,6 +208,14 @@ namespace Texty
             }
         }
 
+        private void ReadToApplication(string name)
+        {
+            if (Path.GetExtension(name).Equals(".rtf"))
+                Contents.LoadFile(name);
+            else
+                Contents.Text = File.ReadAllText(name);
+        }
+
         private void OpenFile()
         {
             if (!Program.IsSaved)
@@ -201,18 +253,16 @@ namespace Texty
                     {
                         Contents.Text = "";
                         ClearFormatting();
-                        if (Path.GetExtension(open.FileName).Equals(".rtf"))
-                            Contents.LoadFile(open.FileName);
-                        else
-                            Contents.Text = File.ReadAllText(open.FileName);
+                        ReadToApplication(open.FileName);
                         Program.content = Contents.Text;
                         String ext = Path.GetExtension(open.FileName);
                         Doc1.Text = Path.GetFileName(open.FileName);
-                        ProcessFile(ext);
                         SetProperties(ext);
+                        ProcessFile(ext);
                         Program.CurrentFile = open.FileName;
                         Program.IsNew = false;
                         Program.IsSaved = false;
+                        History.Add(open.FileName);
                     }
                 }
             }
@@ -277,10 +327,10 @@ namespace Texty
             OpenFile();
         }
 
-        private void ProcessFile(String ext)
+        private void ProcessFile(string ext)
         {
             String content = Contents.Text;
-            List<Triplet> list = null;
+            List<Triplet> list = new List<Triplet>();
             if (ext.Equals(".c"))
             {
                 list = LangC.GetIndexesWithColor(content,
@@ -326,6 +376,7 @@ namespace Texty
 
         private void Exit()
         {
+            History.SaveHistory();
             if (Program.IsSaved == false)
             {
                 try
@@ -882,14 +933,7 @@ namespace Texty
         private void SystemExplorer_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var file = e.Node.FullPath;
-            if (Directory.Exists(file))
-                return;
-            SaveFile();
-            Contents.Text = File.ReadAllText(file);
-            ProcessFile(Path.GetExtension(file));
-            SetProperties(Path.GetExtension(file));
-            Program.content = Contents.Text;
-            Program.CurrentFile = Path.GetFileName(file);
+            OpenFile(file);
         }
 
         private void CopyButton_Click(object sender, EventArgs e)

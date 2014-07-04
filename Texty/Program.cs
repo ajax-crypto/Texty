@@ -19,6 +19,7 @@ namespace Texty
         public static bool readmode = true;
 
         public const String SETTINGS_FILE = "texty.settings";
+        public const String HISTORY_FILE = "texty.history";
         public static Settings settings;
 
         public const int TEXT = 0;
