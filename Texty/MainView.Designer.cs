@@ -60,6 +60,8 @@ namespace Texty
             this.SettingsTT = new System.Windows.Forms.ToolTip(this.components);
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.FindReplacePanel = new System.Windows.Forms.Panel();
+            this.ReplaceAllBox = new System.Windows.Forms.CheckBox();
+            this.MatchCaseBox = new System.Windows.Forms.CheckBox();
             this.ReplaceButton = new System.Windows.Forms.Button();
             this.FindButton = new System.Windows.Forms.Button();
             this.Contents = new System.Windows.Forms.RichTextBox();
@@ -109,8 +111,7 @@ namespace Texty
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.MatchCaseBox = new System.Windows.Forms.CheckBox();
-            this.ReplaceAllBox = new System.Windows.Forms.CheckBox();
+            this.FindTopButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -153,7 +154,7 @@ namespace Texty
             this.SaveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.SaveButton.FlatAppearance.BorderSize = 0;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButton.Location = new System.Drawing.Point(295, 12);
+            this.SaveButton.Location = new System.Drawing.Point(262, 12);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(43, 39);
             this.SaveButton.TabIndex = 2;
@@ -190,7 +191,7 @@ namespace Texty
             this.UnderlineButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.UnderlineButton.FlatAppearance.BorderSize = 0;
             this.UnderlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnderlineButton.Location = new System.Drawing.Point(660, 12);
+            this.UnderlineButton.Location = new System.Drawing.Point(637, 12);
             this.UnderlineButton.Name = "UnderlineButton";
             this.UnderlineButton.Size = new System.Drawing.Size(44, 39);
             this.UnderlineButton.TabIndex = 29;
@@ -206,7 +207,7 @@ namespace Texty
             this.ItalicsButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.ItalicsButton.FlatAppearance.BorderSize = 0;
             this.ItalicsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ItalicsButton.Location = new System.Drawing.Point(611, 12);
+            this.ItalicsButton.Location = new System.Drawing.Point(580, 12);
             this.ItalicsButton.Name = "ItalicsButton";
             this.ItalicsButton.Size = new System.Drawing.Size(44, 39);
             this.ItalicsButton.TabIndex = 28;
@@ -221,7 +222,7 @@ namespace Texty
             this.BoldButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.BoldButton.FlatAppearance.BorderSize = 0;
             this.BoldButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BoldButton.Location = new System.Drawing.Point(558, 12);
+            this.BoldButton.Location = new System.Drawing.Point(525, 12);
             this.BoldButton.Name = "BoldButton";
             this.BoldButton.Size = new System.Drawing.Size(44, 39);
             this.BoldButton.TabIndex = 27;
@@ -265,7 +266,7 @@ namespace Texty
             this.NewContent.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.NewContent.FlatAppearance.BorderSize = 0;
             this.NewContent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewContent.Location = new System.Drawing.Point(432, 12);
+            this.NewContent.Location = new System.Drawing.Point(399, 12);
             this.NewContent.Name = "NewContent";
             this.NewContent.Size = new System.Drawing.Size(42, 39);
             this.NewContent.TabIndex = 7;
@@ -281,7 +282,7 @@ namespace Texty
             this.FontSelection.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.FontSelection.FlatAppearance.BorderSize = 0;
             this.FontSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FontSelection.Location = new System.Drawing.Point(496, 12);
+            this.FontSelection.Location = new System.Drawing.Point(463, 12);
             this.FontSelection.Name = "FontSelection";
             this.FontSelection.Size = new System.Drawing.Size(44, 39);
             this.FontSelection.TabIndex = 6;
@@ -312,7 +313,7 @@ namespace Texty
             this.OpenButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.OpenButton.FlatAppearance.BorderSize = 0;
             this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenButton.Location = new System.Drawing.Point(366, 12);
+            this.OpenButton.Location = new System.Drawing.Point(333, 12);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(42, 39);
             this.OpenButton.TabIndex = 3;
@@ -410,6 +411,30 @@ namespace Texty
             this.FindReplacePanel.Size = new System.Drawing.Size(224, 92);
             this.FindReplacePanel.TabIndex = 2;
             this.FindReplacePanel.Visible = false;
+            // 
+            // ReplaceAllBox
+            // 
+            this.ReplaceAllBox.AutoSize = true;
+            this.ReplaceAllBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceAllBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReplaceAllBox.Location = new System.Drawing.Point(116, 63);
+            this.ReplaceAllBox.Name = "ReplaceAllBox";
+            this.ReplaceAllBox.Size = new System.Drawing.Size(89, 21);
+            this.ReplaceAllBox.TabIndex = 29;
+            this.ReplaceAllBox.Text = "Replace All";
+            this.ReplaceAllBox.UseVisualStyleBackColor = true;
+            // 
+            // MatchCaseBox
+            // 
+            this.MatchCaseBox.AutoSize = true;
+            this.MatchCaseBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MatchCaseBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MatchCaseBox.Location = new System.Drawing.Point(18, 63);
+            this.MatchCaseBox.Name = "MatchCaseBox";
+            this.MatchCaseBox.Size = new System.Drawing.Size(94, 21);
+            this.MatchCaseBox.TabIndex = 28;
+            this.MatchCaseBox.Text = "Match Case";
+            this.MatchCaseBox.UseVisualStyleBackColor = true;
             // 
             // ReplaceButton
             // 
@@ -551,45 +576,45 @@ namespace Texty
             // 
             this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.printToolStripMenuItem.Text = "&Print";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(106, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
@@ -736,7 +761,7 @@ namespace Texty
             // 
             this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.fontToolStripMenuItem.Text = "Fon&t";
             // 
             // colorToolStripMenuItem
@@ -746,21 +771,21 @@ namespace Texty
             this.backgroundToolStripMenuItem});
             this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.colorToolStripMenuItem.Text = "Co&lor";
             // 
             // foregroundToolStripMenuItem
             // 
             this.foregroundToolStripMenuItem.Image = global::Texty.Properties.Resources.fore;
             this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
-            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.foregroundToolStripMenuItem.Text = "&Foreground";
             // 
             // backgroundToolStripMenuItem
             // 
             this.backgroundToolStripMenuItem.Image = global::Texty.Properties.Resources.bg;
             this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.backgroundToolStripMenuItem.Text = "&Background";
             // 
             // alignmentrToolStripMenuItem
@@ -771,7 +796,7 @@ namespace Texty
             this.centerAlignToolStripMenuItem});
             this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
             this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
-            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.alignmentrToolStripMenuItem.Text = "&Alignment";
             // 
             // rightAlignToolStripMenuItem
@@ -837,29 +862,20 @@ namespace Texty
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(9, 39);
             // 
-            // MatchCaseBox
+            // FindTopButton
             // 
-            this.MatchCaseBox.AutoSize = true;
-            this.MatchCaseBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MatchCaseBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MatchCaseBox.Location = new System.Drawing.Point(18, 63);
-            this.MatchCaseBox.Name = "MatchCaseBox";
-            this.MatchCaseBox.Size = new System.Drawing.Size(94, 21);
-            this.MatchCaseBox.TabIndex = 28;
-            this.MatchCaseBox.Text = "Match Case";
-            this.MatchCaseBox.UseVisualStyleBackColor = true;
-            // 
-            // ReplaceAllBox
-            // 
-            this.ReplaceAllBox.AutoSize = true;
-            this.ReplaceAllBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReplaceAllBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReplaceAllBox.Location = new System.Drawing.Point(116, 63);
-            this.ReplaceAllBox.Name = "ReplaceAllBox";
-            this.ReplaceAllBox.Size = new System.Drawing.Size(89, 21);
-            this.ReplaceAllBox.TabIndex = 29;
-            this.ReplaceAllBox.Text = "Replace All";
-            this.ReplaceAllBox.UseVisualStyleBackColor = true;
+            this.FindTopButton.BackgroundImage = global::Texty.Properties.Resources.find;
+            this.FindTopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FindTopButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FindTopButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FindTopButton.FlatAppearance.BorderSize = 0;
+            this.FindTopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FindTopButton.Location = new System.Drawing.Point(700, 11);
+            this.FindTopButton.Name = "FindTopButton";
+            this.FindTopButton.Size = new System.Drawing.Size(44, 39);
+            this.FindTopButton.TabIndex = 34;
+            this.FindTopButton.UseVisualStyleBackColor = true;
+            this.FindTopButton.Click += new System.EventHandler(this.FindTopButton_Click);
             // 
             // MainView
             // 
@@ -867,6 +883,7 @@ namespace Texty
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1061, 609);
+            this.Controls.Add(this.FindTopButton);
             this.Controls.Add(this.TextyMenu);
             this.Controls.Add(this.AppStatus);
             this.Controls.Add(this.MainContainer);
@@ -1047,6 +1064,7 @@ namespace Texty
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private CheckBox MatchCaseBox;
         private CheckBox ReplaceAllBox;
+        private Button FindTopButton;
     }
 }
 

@@ -1151,6 +1151,11 @@ namespace Texty
                 ReplaceButton.Enabled = true;
         }
 
+        private void FindTopButton_Click(object sender, EventArgs e)
+        {
+            ShowFind();
+        }
+
     }
 
 }
