@@ -67,6 +67,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="AutoCompletion.cs" />
     <Compile Include="CodeHighlighter.cs" />
     <Compile Include="Credits.cs">
       <SubType>Form</SubType>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -17,10 +18,11 @@ namespace Texty
         public MainView()
         {
             InitializeComponent();
-            this.MouseDown += this.MainView_MouseDown;
-            this.Contents.GotFocus += this.Contents_GotFocus;
-            this.Contents.KeyDown += this.Contents_MultiKey;
+            this.MouseDown += MainView_MouseDown;
+            this.Contents.GotFocus += Contents_GotFocus;
+            this.Contents.KeyDown += Contents_MultiKey;
             this.Contents.SelectionChanged += Contents_SelectionChanged;
+            this.Contents.TextChanged += Contents_TextChanged;
             this.ExitButton.MouseEnter += ExitButton_MouseEnter;
             this.ExitButton.MouseLeave += ExitButton_MouseLeave;
             this.SystemExplorer.AfterSelect += SystemExplorer_AfterSelect;
@@ -71,6 +73,7 @@ namespace Texty
             List<string> names = History.FetchFileList();
             foreach (string name in names)
             {
+                Debug.WriteLine(name);
                 ToolStripMenuItem item = new ToolStripMenuItem();
                 item.Text = Path.GetFileNameWithoutExtension(name);
                 item.Image = Texty.Properties.Resources.overview_pages_1_256;
@@ -372,6 +375,10 @@ namespace Texty
             }
             // Unlock Screen View
             EndUpdate();
+
+            // Scroll past the visible area to update screen
+            Contents.SelectionStart = Contents.Text.Length - 1;
+            Contents.SelectionStart = 0;
         }
 
         private void Exit()
@@ -532,7 +539,37 @@ namespace Texty
                         }
                     }
                 }
-                // TODO : Auto bracket completion.
+                else
+                    if (e.KeyCode == Keys.OemOpenBrackets && !e.Shift)
+                        AutoCompletion.Opened('[');
+                    else if (e.KeyCode == Keys.OemOpenBrackets && e.Shift)
+                        AutoCompletion.Opened('{');
+                    else if (e.KeyCode == Keys.OemQuotes && e.Shift)
+                        AutoCompletion.Opened('"');
+                    else if (e.KeyCode == Keys.OemQuotes && !e.Shift)
+                        AutoCompletion.Opened('\'');
+                    //else if(e.KeyCode == Keys.O
+            }
+        }
+
+        private void Contents_TextChanged(object sender, EventArgs e)
+        {
+            Program.IsSaved = false;
+            String[] words = Contents.Text.Split(' ');
+            String[] lines = Contents.Text.Split('\n');
+            WCStatusLabel.Text = "Words : " + words.Length;
+            LCStatusLabel.Text = "Lines : " + lines.Length;
+            SaveStatus.Text = "Not Saved";
+            Program.content = Contents.Text;
+            if (Program.mode == Program.DEVELOPER)
+            {
+                if (AutoCompletion.ToClose)
+                {
+                    Contents.Select(Contents.SelectionStart, 0);
+                    Contents.SelectedText = AutoCompletion.GetClosingChar();
+                    Debug.WriteLine("auto : " + Contents.SelectedText);
+                    Contents.SelectionStart -= 1;
+                }
             }
         }
 
@@ -621,21 +658,6 @@ namespace Texty
         private void FontSelection_Click(object sender, EventArgs e)
         {
             FontSelect();
-        }
-
-        private void Contents_TextChanged(object sender, EventArgs e)
-        {
-            Program.IsSaved = false;
-            String[] words = Contents.Text.Split(' ');
-            String[] lines = Contents.Text.Split('\n');
-            WCStatusLabel.Text = "Words : " + words.Length;
-            LCStatusLabel.Text = "Lines : " + lines.Length;
-            SaveStatus.Text = "Not Saved";
-            Program.content = Contents.Text;
-            if (Program.mode == Program.DEVELOPER)
-            {
-                // TODO : Dynamic Highlighting.    
-            }
         }
 
         private void Copy_Click(object sender, EventArgs e)

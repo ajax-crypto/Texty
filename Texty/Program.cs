@@ -38,6 +38,5 @@ namespace Texty
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainView());
         }
-
     }
 }

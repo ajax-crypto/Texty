@@ -50,16 +50,24 @@ namespace Texty
         public static List<string> FetchFileList()
         {
             List<string> ret = new List<string>();
+            Stream file = null;
             try
             {
-                Stream file = File.Open(Program.HISTORY_FILE, FileMode.Open);
+                file = File.Open(Program.HISTORY_FILE, FileMode.Open);
                 BinaryFormatter bf = new BinaryFormatter();
                 contents = (SerializedContents)bf.Deserialize(file);
                 for (int i = 0; i < SerializedContents.BUFFER_SIZE; ++i)
+                {
+                    System.Diagnostics.Debug.WriteLine(contents.names[i]);
                     ret.Add(contents.names[i]);
+                }
+                file.Close();
             }
             catch (Exception exp)
             {
+                System.Diagnostics.Debug.WriteLine("Not found");
+                if(file != null)
+                    file.Close();
             }
             return ret;
         }
@@ -73,20 +81,20 @@ namespace Texty
                 Stream file = File.Open(Program.HISTORY_FILE, FileMode.OpenOrCreate);
                 BinaryFormatter bf = new BinaryFormatter();
                 bf.Serialize(file, contents);
+                System.Diagnostics.Debug.WriteLine("History written");
                 file.Close();
             }
             catch (Exception exp)
             {
+                System.Diagnostics.Debug.WriteLine("Writing error");
             }
         }
 
         public static void Add(string item)
         {
-            if (added < SerializedContents.BUFFER_SIZE)
-            {
-                contents.names[added] = item;
-                added += 1;
-            }
+            contents.names[added] = item;
+            added += 1;
+            added %= SerializedContents.BUFFER_SIZE;
         }
 
     }

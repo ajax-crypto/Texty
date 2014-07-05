@@ -36,6 +36,7 @@ namespace Texty
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.SaveTT = new System.Windows.Forms.ToolTip(this.components);
+            this.SaveButton = new System.Windows.Forms.Button();
             this.ModeLabel = new System.Windows.Forms.Label();
             this.Doc1 = new System.Windows.Forms.Label();
             this.FindTT = new System.Windows.Forms.ToolTip(this.components);
@@ -43,15 +44,22 @@ namespace Texty
             this.ReplaceTT = new System.Windows.Forms.ToolTip(this.components);
             this.ReplaceBox = new System.Windows.Forms.TextBox();
             this.FontTT = new System.Windows.Forms.ToolTip(this.components);
+            this.FontSelection = new System.Windows.Forms.Button();
             this.OpenTT = new System.Windows.Forms.ToolTip(this.components);
+            this.OpenButton = new System.Windows.Forms.Button();
             this.NewTT = new System.Windows.Forms.ToolTip(this.components);
+            this.NewContent = new System.Windows.Forms.Button();
             this.BoldTT = new System.Windows.Forms.ToolTip(this.components);
             this.UnderlineTT = new System.Windows.Forms.ToolTip(this.components);
+            this.UnderlineButton = new System.Windows.Forms.Button();
             this.SettingsTT = new System.Windows.Forms.ToolTip(this.components);
+            this.SettingsButton = new System.Windows.Forms.Button();
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.FindReplacePanel = new System.Windows.Forms.Panel();
             this.ReplaceAllBox = new System.Windows.Forms.CheckBox();
             this.MatchCaseBox = new System.Windows.Forms.CheckBox();
+            this.ReplaceButton = new System.Windows.Forms.Button();
+            this.FindButton = new System.Windows.Forms.Button();
             this.Contents = new System.Windows.Forms.RichTextBox();
             this.SidePanelContainer = new System.Windows.Forms.SplitContainer();
             this.SystemExplorer = new System.Windows.Forms.TreeView();
@@ -61,36 +69,32 @@ namespace Texty
             this.SaveStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.TextyMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.FindTopButton = new System.Windows.Forms.Button();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.timeDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foregroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,20 +103,16 @@ namespace Texty
             this.rightAlignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leftAlignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerAlignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ReplaceButton = new System.Windows.Forms.Button();
-            this.FindButton = new System.Windows.Forms.Button();
-            this.UnderlineButton = new System.Windows.Forms.Button();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.FindTopButton = new System.Windows.Forms.Button();
             this.ItalicsButton = new System.Windows.Forms.Button();
             this.BoldButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
             this.Minimise = new System.Windows.Forms.Button();
-            this.NewContent = new System.Windows.Forms.Button();
-            this.FontSelection = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.OpenButton = new System.Windows.Forms.Button();
-            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -146,6 +146,22 @@ namespace Texty
             // 
             this.SaveTT.AutomaticDelay = 0;
             this.SaveTT.IsBalloon = true;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.BackgroundImage = global::Texty.Properties.Resources.save;
+            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SaveButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Location = new System.Drawing.Point(262, 10);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(43, 39);
+            this.SaveButton.TabIndex = 2;
+            this.SaveTT.SetToolTip(this.SaveButton, "Save Current File");
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ModeLabel
             // 
@@ -203,15 +219,63 @@ namespace Texty
             this.FontTT.AutomaticDelay = 0;
             this.FontTT.IsBalloon = true;
             // 
+            // FontSelection
+            // 
+            this.FontSelection.BackgroundImage = global::Texty.Properties.Resources.text;
+            this.FontSelection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FontSelection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FontSelection.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FontSelection.FlatAppearance.BorderSize = 0;
+            this.FontSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FontSelection.Location = new System.Drawing.Point(463, 12);
+            this.FontSelection.Name = "FontSelection";
+            this.FontSelection.Size = new System.Drawing.Size(44, 39);
+            this.FontSelection.TabIndex = 6;
+            this.FontTT.SetToolTip(this.FontSelection, "Change Font");
+            this.FontSelection.UseVisualStyleBackColor = true;
+            this.FontSelection.Click += new System.EventHandler(this.FontSelection_Click);
+            // 
             // OpenTT
             // 
             this.OpenTT.AutomaticDelay = 0;
             this.OpenTT.IsBalloon = true;
             // 
+            // OpenButton
+            // 
+            this.OpenButton.BackgroundImage = global::Texty.Properties.Resources.opendoc;
+            this.OpenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OpenButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OpenButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.OpenButton.FlatAppearance.BorderSize = 0;
+            this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenButton.Location = new System.Drawing.Point(333, 12);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(42, 39);
+            this.OpenButton.TabIndex = 3;
+            this.OpenTT.SetToolTip(this.OpenButton, "Open an existing document");
+            this.OpenButton.UseVisualStyleBackColor = true;
+            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
+            // 
             // NewTT
             // 
             this.NewTT.AutomaticDelay = 0;
             this.NewTT.IsBalloon = true;
+            // 
+            // NewContent
+            // 
+            this.NewContent.BackgroundImage = global::Texty.Properties.Resources._new;
+            this.NewContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.NewContent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewContent.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.NewContent.FlatAppearance.BorderSize = 0;
+            this.NewContent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewContent.Location = new System.Drawing.Point(399, 12);
+            this.NewContent.Name = "NewContent";
+            this.NewContent.Size = new System.Drawing.Size(42, 39);
+            this.NewContent.TabIndex = 7;
+            this.NewTT.SetToolTip(this.NewContent, "Open new document (in Rich Text Mode)");
+            this.NewContent.UseVisualStyleBackColor = true;
+            this.NewContent.Click += new System.EventHandler(this.NewContent_Click);
             // 
             // BoldTT
             // 
@@ -223,10 +287,41 @@ namespace Texty
             this.UnderlineTT.AutomaticDelay = 0;
             this.UnderlineTT.IsBalloon = true;
             // 
+            // UnderlineButton
+            // 
+            this.UnderlineButton.BackgroundImage = global::Texty.Properties.Resources.underline;
+            this.UnderlineButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.UnderlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UnderlineButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.UnderlineButton.FlatAppearance.BorderSize = 0;
+            this.UnderlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UnderlineButton.Location = new System.Drawing.Point(637, 12);
+            this.UnderlineButton.Name = "UnderlineButton";
+            this.UnderlineButton.Size = new System.Drawing.Size(44, 39);
+            this.UnderlineButton.TabIndex = 29;
+            this.UnderlineTT.SetToolTip(this.UnderlineButton, "Underline selected text");
+            this.UnderlineButton.UseVisualStyleBackColor = true;
+            this.UnderlineButton.Click += new System.EventHandler(this.UnderlineButton_Click);
+            // 
             // SettingsTT
             // 
             this.SettingsTT.AutomaticDelay = 0;
             this.SettingsTT.IsBalloon = true;
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.BackgroundImage = global::Texty.Properties.Resources.settings;
+            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SettingsButton.FlatAppearance.BorderSize = 0;
+            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsButton.Location = new System.Drawing.Point(909, 2);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(34, 29);
+            this.SettingsButton.TabIndex = 20;
+            this.SettingsTT.SetToolTip(this.SettingsButton, "Open settings panel");
+            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // MainContainer
             // 
@@ -282,6 +377,38 @@ namespace Texty
             this.MatchCaseBox.TabIndex = 28;
             this.MatchCaseBox.Text = "Match Case";
             this.MatchCaseBox.UseVisualStyleBackColor = true;
+            // 
+            // ReplaceButton
+            // 
+            this.ReplaceButton.BackColor = System.Drawing.Color.White;
+            this.ReplaceButton.BackgroundImage = global::Texty.Properties.Resources._ref;
+            this.ReplaceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ReplaceButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReplaceButton.Enabled = false;
+            this.ReplaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ReplaceButton.FlatAppearance.BorderSize = 0;
+            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceButton.Location = new System.Drawing.Point(202, 35);
+            this.ReplaceButton.Name = "ReplaceButton";
+            this.ReplaceButton.Size = new System.Drawing.Size(19, 21);
+            this.ReplaceButton.TabIndex = 26;
+            this.ReplaceButton.UseVisualStyleBackColor = false;
+            // 
+            // FindButton
+            // 
+            this.FindButton.BackColor = System.Drawing.Color.White;
+            this.FindButton.BackgroundImage = global::Texty.Properties.Resources.find;
+            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FindButton.Enabled = false;
+            this.FindButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FindButton.FlatAppearance.BorderSize = 0;
+            this.FindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FindButton.Location = new System.Drawing.Point(202, 7);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Size = new System.Drawing.Size(19, 22);
+            this.FindButton.TabIndex = 19;
+            this.FindButton.UseVisualStyleBackColor = false;
             // 
             // Contents
             // 
@@ -367,9 +494,9 @@ namespace Texty
             this.formatToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.TextyMenu.Location = new System.Drawing.Point(5, 67);
+            this.TextyMenu.Location = new System.Drawing.Point(5, 66);
             this.TextyMenu.Name = "TextyMenu";
-            this.TextyMenu.Size = new System.Drawing.Size(251, 25);
+            this.TextyMenu.Size = new System.Drawing.Size(343, 25);
             this.TextyMenu.TabIndex = 32;
             this.TextyMenu.Text = "menuStrip1";
             // 
@@ -388,15 +515,57 @@ namespace Texty
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(40, 21);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // recentToolStripMenuItem
+            // 
+            this.recentToolStripMenuItem.Image = global::Texty.Properties.Resources.overview_pages_1_2561;
+            this.recentToolStripMenuItem.Name = "recentToolStripMenuItem";
+            this.recentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recentToolStripMenuItem.Text = "&Recent";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
             // 
@@ -417,20 +586,86 @@ namespace Texty
             this.editToolStripMenuItem.Size = new System.Drawing.Size(43, 21);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Image = global::Texty.Properties.Resources.undo;
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.undoToolStripMenuItem.Text = "U&ndo";
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Image = global::Texty.Properties.Resources.redo;
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.redoToolStripMenuItem.Text = "Red&o";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(135, 6);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Enabled = false;
+            this.copyToolStripMenuItem.Image = global::Texty.Properties.Resources.duplicate;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.copyToolStripMenuItem.Text = "&Copy";
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Enabled = false;
+            this.cutToolStripMenuItem.Image = global::Texty.Properties.Resources.cut;
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cutToolStripMenuItem.Text = "C&ut";
+            // 
+            // delToolStripMenuItem
+            // 
+            this.delToolStripMenuItem.Enabled = false;
+            this.delToolStripMenuItem.Image = global::Texty.Properties.Resources.trash;
+            this.delToolStripMenuItem.Name = "delToolStripMenuItem";
+            this.delToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.delToolStripMenuItem.Text = "Delete";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Image = global::Texty.Properties.Resources.paste;
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.pasteToolStripMenuItem.Text = "&Paste";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(135, 6);
             // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.Image = global::Texty.Properties.Resources.find;
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.findToolStripMenuItem.Text = "Fin&d";
+            // 
+            // replaceToolStripMenuItem
+            // 
+            this.replaceToolStripMenuItem.Image = global::Texty.Properties.Resources._ref;
+            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.replaceToolStripMenuItem.Text = "Rep&lace";
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(135, 6);
+            // 
+            // timeDateToolStripMenuItem
+            // 
+            this.timeDateToolStripMenuItem.Image = global::Texty.Properties.Resources.time;
+            this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
+            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.timeDateToolStripMenuItem.Text = "&Time/Date";
             // 
             // viewToolStripMenuItem
             // 
@@ -441,6 +676,20 @@ namespace Texty
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.viewToolStripMenuItem.Text = "Vi&ew";
+            // 
+            // zoomToolStripMenuItem
+            // 
+            this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
+            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomToolStripMenuItem.Text = "&Zoom In";
+            // 
+            // zoomOutToolStripMenuItem
+            // 
+            this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
+            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
             // 
             // readOnlyToolStripMenuItem
             // 
@@ -458,6 +707,69 @@ namespace Texty
             this.formatToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
             this.formatToolStripMenuItem.Text = "&Format";
             // 
+            // fontToolStripMenuItem
+            // 
+            this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
+            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontToolStripMenuItem.Text = "Fon&t";
+            // 
+            // colorToolStripMenuItem
+            // 
+            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foregroundToolStripMenuItem,
+            this.backgroundToolStripMenuItem});
+            this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
+            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colorToolStripMenuItem.Text = "Co&lor";
+            // 
+            // foregroundToolStripMenuItem
+            // 
+            this.foregroundToolStripMenuItem.Image = global::Texty.Properties.Resources.fore;
+            this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
+            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.foregroundToolStripMenuItem.Text = "&Foreground";
+            // 
+            // backgroundToolStripMenuItem
+            // 
+            this.backgroundToolStripMenuItem.Image = global::Texty.Properties.Resources.bg;
+            this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.backgroundToolStripMenuItem.Text = "&Background";
+            // 
+            // alignmentrToolStripMenuItem
+            // 
+            this.alignmentrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rightAlignToolStripMenuItem,
+            this.leftAlignToolStripMenuItem,
+            this.centerAlignToolStripMenuItem});
+            this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
+            this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
+            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alignmentrToolStripMenuItem.Text = "&Alignment";
+            // 
+            // rightAlignToolStripMenuItem
+            // 
+            this.rightAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_right_256;
+            this.rightAlignToolStripMenuItem.Name = "rightAlignToolStripMenuItem";
+            this.rightAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.rightAlignToolStripMenuItem.Text = "&Right Align";
+            // 
+            // leftAlignToolStripMenuItem
+            // 
+            this.leftAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_center_256;
+            this.leftAlignToolStripMenuItem.Name = "leftAlignToolStripMenuItem";
+            this.leftAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.leftAlignToolStripMenuItem.Text = "&Left Align";
+            // 
+            // centerAlignToolStripMenuItem
+            // 
+            this.centerAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_left_256;
+            this.centerAlignToolStripMenuItem.Name = "centerAlignToolStripMenuItem";
+            this.centerAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.centerAlignToolStripMenuItem.Text = "&Center Align";
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -466,6 +778,20 @@ namespace Texty
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.aboutToolStripMenuItem.Text = "&Help";
+            // 
+            // creditsToolStripMenuItem
+            // 
+            this.creditsToolStripMenuItem.Image = global::Texty.Properties.Resources.credits;
+            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.creditsToolStripMenuItem.Text = "C&redits";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Image = global::Texty.Properties.Resources.about;
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
+            this.aboutToolStripMenuItem1.Text = "A&bout";
             // 
             // shapeContainer1
             // 
@@ -501,253 +827,6 @@ namespace Texty
             this.FindTopButton.UseVisualStyleBackColor = true;
             this.FindTopButton.Click += new System.EventHandler(this.FindTopButton_Click);
             // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            // 
-            // recentToolStripMenuItem
-            // 
-            this.recentToolStripMenuItem.Image = global::Texty.Properties.Resources.overview_pages_1_2561;
-            this.recentToolStripMenuItem.Name = "recentToolStripMenuItem";
-            this.recentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.recentToolStripMenuItem.Text = "&Recent";
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.printToolStripMenuItem.Text = "&Print";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Image = global::Texty.Properties.Resources.undo;
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.undoToolStripMenuItem.Text = "U&ndo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Image = global::Texty.Properties.Resources.redo;
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.redoToolStripMenuItem.Text = "Red&o";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Enabled = false;
-            this.copyToolStripMenuItem.Image = global::Texty.Properties.Resources.duplicate;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Enabled = false;
-            this.cutToolStripMenuItem.Image = global::Texty.Properties.Resources.cut;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.cutToolStripMenuItem.Text = "C&ut";
-            // 
-            // delToolStripMenuItem
-            // 
-            this.delToolStripMenuItem.Enabled = false;
-            this.delToolStripMenuItem.Image = global::Texty.Properties.Resources.trash;
-            this.delToolStripMenuItem.Name = "delToolStripMenuItem";
-            this.delToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.delToolStripMenuItem.Text = "Delete";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = global::Texty.Properties.Resources.paste;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            // 
-            // findToolStripMenuItem
-            // 
-            this.findToolStripMenuItem.Image = global::Texty.Properties.Resources.find;
-            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.findToolStripMenuItem.Text = "Fin&d";
-            // 
-            // replaceToolStripMenuItem
-            // 
-            this.replaceToolStripMenuItem.Image = global::Texty.Properties.Resources._ref;
-            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.replaceToolStripMenuItem.Text = "Rep&lace";
-            // 
-            // timeDateToolStripMenuItem
-            // 
-            this.timeDateToolStripMenuItem.Image = global::Texty.Properties.Resources.time;
-            this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
-            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.timeDateToolStripMenuItem.Text = "&Time/Date";
-            // 
-            // zoomToolStripMenuItem
-            // 
-            this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
-            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.zoomToolStripMenuItem.Text = "&Zoom In";
-            // 
-            // zoomOutToolStripMenuItem
-            // 
-            this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
-            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
-            // 
-            // fontToolStripMenuItem
-            // 
-            this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
-            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.fontToolStripMenuItem.Text = "Fon&t";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.foregroundToolStripMenuItem,
-            this.backgroundToolStripMenuItem});
-            this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.colorToolStripMenuItem.Text = "Co&lor";
-            // 
-            // foregroundToolStripMenuItem
-            // 
-            this.foregroundToolStripMenuItem.Image = global::Texty.Properties.Resources.fore;
-            this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
-            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.foregroundToolStripMenuItem.Text = "&Foreground";
-            // 
-            // backgroundToolStripMenuItem
-            // 
-            this.backgroundToolStripMenuItem.Image = global::Texty.Properties.Resources.bg;
-            this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.backgroundToolStripMenuItem.Text = "&Background";
-            // 
-            // alignmentrToolStripMenuItem
-            // 
-            this.alignmentrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rightAlignToolStripMenuItem,
-            this.leftAlignToolStripMenuItem,
-            this.centerAlignToolStripMenuItem});
-            this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
-            this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
-            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.alignmentrToolStripMenuItem.Text = "&Alignment";
-            // 
-            // rightAlignToolStripMenuItem
-            // 
-            this.rightAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_right_256;
-            this.rightAlignToolStripMenuItem.Name = "rightAlignToolStripMenuItem";
-            this.rightAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.rightAlignToolStripMenuItem.Text = "&Right Align";
-            // 
-            // leftAlignToolStripMenuItem
-            // 
-            this.leftAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_center_256;
-            this.leftAlignToolStripMenuItem.Name = "leftAlignToolStripMenuItem";
-            this.leftAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.leftAlignToolStripMenuItem.Text = "&Left Align";
-            // 
-            // centerAlignToolStripMenuItem
-            // 
-            this.centerAlignToolStripMenuItem.Image = global::Texty.Properties.Resources.align_left_256;
-            this.centerAlignToolStripMenuItem.Name = "centerAlignToolStripMenuItem";
-            this.centerAlignToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.centerAlignToolStripMenuItem.Text = "&Center Align";
-            // 
-            // creditsToolStripMenuItem
-            // 
-            this.creditsToolStripMenuItem.Image = global::Texty.Properties.Resources.credits;
-            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.creditsToolStripMenuItem.Text = "C&redits";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Image = global::Texty.Properties.Resources.about;
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
-            this.aboutToolStripMenuItem1.Text = "A&bout";
-            // 
-            // ReplaceButton
-            // 
-            this.ReplaceButton.BackColor = System.Drawing.Color.White;
-            this.ReplaceButton.BackgroundImage = global::Texty.Properties.Resources._ref;
-            this.ReplaceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ReplaceButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ReplaceButton.Enabled = false;
-            this.ReplaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ReplaceButton.FlatAppearance.BorderSize = 0;
-            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReplaceButton.Location = new System.Drawing.Point(202, 35);
-            this.ReplaceButton.Name = "ReplaceButton";
-            this.ReplaceButton.Size = new System.Drawing.Size(19, 21);
-            this.ReplaceButton.TabIndex = 26;
-            this.ReplaceButton.UseVisualStyleBackColor = false;
-            // 
-            // FindButton
-            // 
-            this.FindButton.BackColor = System.Drawing.Color.White;
-            this.FindButton.BackgroundImage = global::Texty.Properties.Resources.find;
-            this.FindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FindButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FindButton.Enabled = false;
-            this.FindButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.FindButton.FlatAppearance.BorderSize = 0;
-            this.FindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FindButton.Location = new System.Drawing.Point(202, 7);
-            this.FindButton.Name = "FindButton";
-            this.FindButton.Size = new System.Drawing.Size(19, 22);
-            this.FindButton.TabIndex = 19;
-            this.FindButton.UseVisualStyleBackColor = false;
-            // 
-            // UnderlineButton
-            // 
-            this.UnderlineButton.BackgroundImage = global::Texty.Properties.Resources.underline;
-            this.UnderlineButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.UnderlineButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UnderlineButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.UnderlineButton.FlatAppearance.BorderSize = 0;
-            this.UnderlineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnderlineButton.Location = new System.Drawing.Point(637, 12);
-            this.UnderlineButton.Name = "UnderlineButton";
-            this.UnderlineButton.Size = new System.Drawing.Size(44, 39);
-            this.UnderlineButton.TabIndex = 29;
-            this.UnderlineTT.SetToolTip(this.UnderlineButton, "Underline selected text");
-            this.UnderlineButton.UseVisualStyleBackColor = true;
-            this.UnderlineButton.Click += new System.EventHandler(this.UnderlineButton_Click);
-            // 
             // ItalicsButton
             // 
             this.ItalicsButton.BackgroundImage = global::Texty.Properties.Resources.italics;
@@ -778,21 +857,6 @@ namespace Texty
             this.BoldButton.UseVisualStyleBackColor = true;
             this.BoldButton.Click += new System.EventHandler(this.BoldButton_Click);
             // 
-            // SettingsButton
-            // 
-            this.SettingsButton.BackgroundImage = global::Texty.Properties.Resources.settings;
-            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SettingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SettingsButton.FlatAppearance.BorderSize = 0;
-            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.Location = new System.Drawing.Point(909, 2);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(34, 29);
-            this.SettingsButton.TabIndex = 20;
-            this.SettingsTT.SetToolTip(this.SettingsButton, "Open settings panel");
-            this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
-            // 
             // Minimise
             // 
             this.Minimise.BackgroundImage = global::Texty.Properties.Resources.min;
@@ -806,38 +870,6 @@ namespace Texty
             this.Minimise.TabIndex = 10;
             this.Minimise.UseVisualStyleBackColor = true;
             this.Minimise.Click += new System.EventHandler(this.Minimise_Click);
-            // 
-            // NewContent
-            // 
-            this.NewContent.BackgroundImage = global::Texty.Properties.Resources._new;
-            this.NewContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.NewContent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewContent.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.NewContent.FlatAppearance.BorderSize = 0;
-            this.NewContent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewContent.Location = new System.Drawing.Point(399, 12);
-            this.NewContent.Name = "NewContent";
-            this.NewContent.Size = new System.Drawing.Size(42, 39);
-            this.NewContent.TabIndex = 7;
-            this.NewTT.SetToolTip(this.NewContent, "Open new document (in Rich Text Mode)");
-            this.NewContent.UseVisualStyleBackColor = true;
-            this.NewContent.Click += new System.EventHandler(this.NewContent_Click);
-            // 
-            // FontSelection
-            // 
-            this.FontSelection.BackgroundImage = global::Texty.Properties.Resources.text;
-            this.FontSelection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FontSelection.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FontSelection.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.FontSelection.FlatAppearance.BorderSize = 0;
-            this.FontSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FontSelection.Location = new System.Drawing.Point(463, 12);
-            this.FontSelection.Name = "FontSelection";
-            this.FontSelection.Size = new System.Drawing.Size(44, 39);
-            this.FontSelection.TabIndex = 6;
-            this.FontTT.SetToolTip(this.FontSelection, "Change Font");
-            this.FontSelection.UseVisualStyleBackColor = true;
-            this.FontSelection.Click += new System.EventHandler(this.FontSelection_Click);
             // 
             // ExitButton
             // 
@@ -853,38 +885,6 @@ namespace Texty
             this.ExitButton.TabIndex = 4;
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // OpenButton
-            // 
-            this.OpenButton.BackgroundImage = global::Texty.Properties.Resources.opendoc;
-            this.OpenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.OpenButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OpenButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.OpenButton.FlatAppearance.BorderSize = 0;
-            this.OpenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenButton.Location = new System.Drawing.Point(333, 12);
-            this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(42, 39);
-            this.OpenButton.TabIndex = 3;
-            this.OpenTT.SetToolTip(this.OpenButton, "Open an existing document");
-            this.OpenButton.UseVisualStyleBackColor = true;
-            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.BackgroundImage = global::Texty.Properties.Resources.save;
-            this.SaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SaveButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.SaveButton.FlatAppearance.BorderSize = 0;
-            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButton.Location = new System.Drawing.Point(262, 10);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(43, 39);
-            this.SaveButton.TabIndex = 2;
-            this.SaveTT.SetToolTip(this.SaveButton, "Save Current File");
-            this.SaveButton.UseVisualStyleBackColor = false;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // MainView
             // 
@@ -931,6 +931,7 @@ namespace Texty
             this.PerformLayout();
 
         }
+        #endregion
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -950,9 +951,8 @@ namespace Texty
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        #endregion
 
-        [DllImport("user32", EntryPoint = "SendMessage")]
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private static extern int SendMessageB(IntPtr hWnd, uint msg, int wParam, ref POINT lp);
         
         int updating = 0;
@@ -992,6 +992,7 @@ namespace Texty
             SendMessage(Contents.Handle, WM_SETREDRAW, 1, 0);
             SendMessage(Contents.Handle, EM_SETEVENTMASK, 0, OldEventMask);
         }
+
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button ExitButton;
@@ -1003,8 +1004,6 @@ namespace Texty
         private ToolTip SaveTT;
         private Button SettingsButton;
         private Label ModeLabel;
-        //private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        //private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Label Doc1;
         private Button BoldButton;
         private Button ItalicsButton;
