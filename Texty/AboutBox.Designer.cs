@@ -35,6 +35,8 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.OKbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -43,9 +45,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(147, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 32);
+            this.label1.Size = new System.Drawing.Size(74, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "About";
+            this.label1.Text = "Texty";
             // 
             // linkLabel1
             // 
@@ -91,7 +93,7 @@
             this.OKbutton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.OKbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.OKbutton.Location = new System.Drawing.Point(145, 268);
+            this.OKbutton.Location = new System.Drawing.Point(133, 368);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(96, 32);
             this.OKbutton.TabIndex = 6;
@@ -108,12 +110,31 @@
             this.label3.Text = "Texty is a simple text editor with few extra capabilities like syntax highlightin" +
     "g for code with a fresh modern UI.";
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(42, 264);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(305, 50);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Reading and Writing PDF files is done using the iTextSharp library.";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(42, 303);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(305, 50);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Reading .DOCX and .DOC format files is done using the Spire library from e-iceblu" +
+    "e.";
+            // 
             // AboutBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(389, 312);
+            this.ClientSize = new System.Drawing.Size(389, 423);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.OKbutton);
             this.Controls.Add(this.linkLabel2);
@@ -142,5 +163,7 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Button OKbutton;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

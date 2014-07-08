@@ -74,6 +74,8 @@ namespace Texty
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +96,7 @@ namespace Texty
             this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,6 +116,7 @@ namespace Texty
             this.BoldButton = new System.Windows.Forms.Button();
             this.Minimise = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.hTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -508,6 +512,7 @@ namespace Texty
             this.newToolStripMenuItem,
             this.recentToolStripMenuItem,
             this.toolStripSeparator1,
+            this.exportToToolStripMenuItem,
             this.printToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
@@ -547,6 +552,22 @@ namespace Texty
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exportToToolStripMenuItem
+            // 
+            this.exportToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pDFToolStripMenuItem,
+            this.hTMLToolStripMenuItem});
+            this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
+            this.exportToToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToToolStripMenuItem.Text = "&Export To";
+            // 
+            // pDFToolStripMenuItem
+            // 
+            this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pDFToolStripMenuItem.Text = "&PDF";
+            this.pDFToolStripMenuItem.Click += new System.EventHandler(this.pDFToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
@@ -672,7 +693,8 @@ namespace Texty
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zoomToolStripMenuItem,
             this.zoomOutToolStripMenuItem,
-            this.readOnlyToolStripMenuItem});
+            this.readOnlyToolStripMenuItem,
+            this.wordWrapToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.viewToolStripMenuItem.Text = "Vi&ew";
@@ -681,21 +703,28 @@ namespace Texty
             // 
             this.zoomToolStripMenuItem.Image = global::Texty.Properties.Resources.magnify;
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.zoomToolStripMenuItem.Text = "&Zoom In";
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Image = global::Texty.Properties.Resources.zoomout;
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
             // 
             // readOnlyToolStripMenuItem
             // 
             this.readOnlyToolStripMenuItem.Name = "readOnlyToolStripMenuItem";
-            this.readOnlyToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.readOnlyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.readOnlyToolStripMenuItem.Text = "&Read Only";
+            // 
+            // wordWrapToolStripMenuItem
+            // 
+            this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.wordWrapToolStripMenuItem.Text = "&Word Wrap";
+            this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.wordWrapToolStripMenuItem_Click);
             // 
             // formatToolStripMenuItem
             // 
@@ -711,7 +740,7 @@ namespace Texty
             // 
             this.fontToolStripMenuItem.Image = global::Texty.Properties.Resources.font_sel;
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.fontToolStripMenuItem.Text = "Fon&t";
             // 
             // colorToolStripMenuItem
@@ -721,7 +750,7 @@ namespace Texty
             this.backgroundToolStripMenuItem});
             this.colorToolStripMenuItem.Image = global::Texty.Properties.Resources.palette;
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.colorToolStripMenuItem.Text = "Co&lor";
             // 
             // foregroundToolStripMenuItem
@@ -746,7 +775,7 @@ namespace Texty
             this.centerAlignToolStripMenuItem});
             this.alignmentrToolStripMenuItem.Image = global::Texty.Properties.Resources.align_justify_256;
             this.alignmentrToolStripMenuItem.Name = "alignmentrToolStripMenuItem";
-            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alignmentrToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.alignmentrToolStripMenuItem.Text = "&Alignment";
             // 
             // rightAlignToolStripMenuItem
@@ -885,6 +914,13 @@ namespace Texty
             this.ExitButton.TabIndex = 4;
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hTMLToolStripMenuItem.Text = "&HTML";
+            this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -1073,6 +1109,10 @@ namespace Texty
         private CheckBox ReplaceAllBox;
         private Button FindTopButton;
         private ToolStripMenuItem recentToolStripMenuItem;
+        private ToolStripMenuItem wordWrapToolStripMenuItem;
+        private ToolStripMenuItem exportToToolStripMenuItem;
+        private ToolStripMenuItem pDFToolStripMenuItem;
+        private ToolStripMenuItem hTMLToolStripMenuItem;
     }
 }
 

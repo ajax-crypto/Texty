@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Texty
@@ -68,6 +69,16 @@ namespace Texty
             UpdateSettings();
         }
 
+        private void ConvertToRTF(string file)
+        {
+            Spire.Doc.Document doc = new Spire.Doc.Document();
+            doc.LoadFromFile(file);
+            doc.SaveToFile("temp.rtf", Spire.Doc.FileFormat.Rtf);
+            Contents.LoadFile("temp.rtf");
+            File.Delete("temp.rtf");
+        }
+
+
         private void recentToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             List<string> names = History.FetchFileList();
@@ -111,6 +122,9 @@ namespace Texty
             ProcessFile(Path.GetExtension(name));
             Program.content = Contents.Text;
             Program.CurrentFile = Path.GetFileName(name);
+            Program.IsNew = false;
+            Program.IsSaved = true;
+            Doc1.Text = Path.GetFileName(name);
             History.Add(name);
         }
 
@@ -215,8 +229,25 @@ namespace Texty
         {
             if (Path.GetExtension(name).Equals(".rtf"))
                 Contents.LoadFile(name);
+            else if (Path.GetExtension(name).Equals(".docx") ||
+                     Path.GetExtension(name).Equals(".doc"))
+                ConvertToRTF(name);
+            else if (Path.GetExtension(name).Equals(".pdf"))
+                ConvertToText(name);
             else
                 Contents.Text = File.ReadAllText(name);
+        }
+
+        private void ConvertToText(string name)
+        {
+            iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(name);
+            string text = string.Empty;
+            for (int page = 1; page <= reader.NumberOfPages; page++)
+            {
+                text += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(reader, page);
+            }
+            reader.Close();
+            Contents.Text = text;
         }
 
         private void OpenFile()
@@ -264,7 +295,7 @@ namespace Texty
                         ProcessFile(ext);
                         Program.CurrentFile = open.FileName;
                         Program.IsNew = false;
-                        Program.IsSaved = false;
+                        Program.IsSaved = true;
                         History.Add(open.FileName);
                     }
                 }
@@ -273,7 +304,7 @@ namespace Texty
 
         private void SetProperties(string ext)
         {
-            if (ext.Equals(".rtf"))
+            if (ext.Equals(".rtf") || ext.Equals(".docx"))
             {
                 Program.mode = Program.TEXT;
                 colorToolStripMenuItem.Enabled = true;
@@ -322,7 +353,7 @@ namespace Texty
             int lc = Contents.Text.Split('\n').Length;
             WCStatusLabel.Text = "Words : " + wc;
             LCStatusLabel.Text = "Lines: " + lc;
-            SaveStatus.Text = "Not Saved";
+            SaveStatus.Text = "Saved";
         }
 
         private void OpenButton_Click(object sender, EventArgs e)
@@ -450,8 +481,7 @@ namespace Texty
                     Doc1.Text = Path.GetFileName(save.FileName);
                     try
                     {
-                        if (Program.mode == Program.TEXT &&
-                            Path.GetExtension(save.FileName).Equals(".rtf"))
+                        if (Program.mode == Program.TEXT)
                             Contents.SaveFile(save.FileName);
                         else
                             File.WriteAllText(save.FileName, Contents.Text);
@@ -475,6 +505,7 @@ namespace Texty
                     else
                     {
                         File.WriteAllText(Program.CurrentFile, "");
+                        Debug.WriteLine(Program.CurrentFile);
                         File.WriteAllText(Program.CurrentFile, Contents.Text);
                     }
                 }
@@ -567,7 +598,7 @@ namespace Texty
                 {
                     Contents.Select(Contents.SelectionStart, 0);
                     Contents.SelectedText = AutoCompletion.GetClosingChar();
-                    Debug.WriteLine("auto : " + Contents.SelectedText);
+                    //Debug.WriteLine("auto : " + Contents.SelectedText);
                     Contents.SelectionStart -= 1;
                 }
             }
@@ -821,7 +852,8 @@ namespace Texty
                 {
                     if (f.Extension.Equals(".txt") || f.Extension.Equals(".c") ||
                         f.Extension.Equals(".cpp") || f.Extension.Equals(".java") ||
-                        f.Extension.Equals(".rtf") || f.Extension.Equals(".cs"))
+                        f.Extension.Equals(".rtf") || f.Extension.Equals(".cs") ||
+                        f.Extension.Equals(".js") || f.Extension.Equals(".docx"))
                     {
                         TreeNode t = new TreeNode(f.Name);
                         if (node != null) node.Nodes.Add(t);
@@ -1220,6 +1252,31 @@ namespace Texty
         private void FindTopButton_Click(object sender, EventArgs e)
         {
             ShowFind();
+        }
+
+        private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Contents.WordWrap)
+                Contents.WordWrap = false;
+            else
+                Contents.WordWrap = true;
+        }
+
+        private void pDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            iTextSharp.text.Document doc = new iTextSharp.text.Document();
+            iTextSharp.text.pdf.PdfWriter.GetInstance(doc, new FileStream(Program.CurrentFile + ".pdf", FileMode.OpenOrCreate));
+            doc.Open();
+            iTextSharp.text.html.simpleparser.HTMLWorker hw = new iTextSharp.text.html.simpleparser.HTMLWorker(doc);
+            hw.Parse(new StringReader(MarkupConverter.RtfToHtmlConverter.ConvertRtfToHtml(Contents.Rtf)));
+            doc.Close();
+        }
+
+        private void hTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string content = Contents.Rtf;
+            string html = MarkupConverter.RtfToHtmlConverter.ConvertRtfToHtml(content);
+            File.WriteAllText(Program.CurrentFile + ".html", html);
         }
 
     }
