@@ -294,6 +294,7 @@ namespace Texty
                         SetProperties(ext);
                         ProcessFile(ext);
                         Program.CurrentFile = open.FileName;
+                        Debug.WriteLine("Opened : " + Program.CurrentFile);
                         Program.IsNew = false;
                         Program.IsSaved = true;
                         History.Add(open.FileName);
@@ -313,6 +314,8 @@ namespace Texty
                 BoldButton.Enabled = true;
                 ItalicsButton.Enabled = true;
                 UnderlineButton.Enabled = true;
+                Program.readmode = false;
+                Contents.ReadOnly = false;
                 return;
             }
             else if (ext.Equals(".c") ||
@@ -340,6 +343,8 @@ namespace Texty
             {
                 ClearFormatting();
                 Program.mode = Program.RAW;
+                Program.readmode = false;
+                Contents.ReadOnly = false;
                 colorToolStripMenuItem.Enabled = false;
                 alignmentrToolStripMenuItem.Enabled = false;
                 ModeLabel.Text = "Raw Text";
@@ -526,7 +531,9 @@ namespace Texty
 
         private void Contents_MultiKey(object sender, KeyEventArgs e)
         {
-            if (e.Control == true && e.KeyCode == Keys.F)
+            Debug.WriteLine("key pressed");
+            Debug.WriteLine("Mode : " + Program.mode + " ReadOnly : " + Program.readmode);
+            if (e.Control && e.KeyCode == Keys.F)
                 ShowFind();
             else if (e.Control && e.KeyCode == Keys.Z)
                 Contents.Undo();
