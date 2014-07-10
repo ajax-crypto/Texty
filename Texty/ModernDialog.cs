@@ -19,6 +19,9 @@ namespace Texty
         public ModernDialog(string header, string desc, string left, string center)
         {
             InitializeComponent();
+            this.Opacity = 0;
+            this.FadeTimer.Enabled = true;
+            this.FadeTimer.Elapsed += FadeTimer_Elapsed;
             HeaderLabel.Text = header;
             DescriptionLabel.Text = desc;
             LeftButton.Text = left;

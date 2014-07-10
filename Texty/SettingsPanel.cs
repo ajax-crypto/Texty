@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Texty
 {
-    public partial class SettingsPanel : Form
+    public partial class SettingsPanel : TextyForm
     {
 
         public int result;
@@ -22,11 +22,12 @@ namespace Texty
         {
             InitializeComponent();
             this.MouseDown += SettingsPanel_MouseDown;
+            this.Opacity = 0.0;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            //this.Dispose();
             this.Close();
         }
 

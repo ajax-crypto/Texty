@@ -294,7 +294,6 @@ namespace Texty
                         SetProperties(ext);
                         ProcessFile(ext);
                         Program.CurrentFile = open.FileName;
-                        Debug.WriteLine("Opened : " + Program.CurrentFile);
                         Program.IsNew = false;
                         Program.IsSaved = true;
                         History.Add(open.FileName);
@@ -531,8 +530,6 @@ namespace Texty
 
         private void Contents_MultiKey(object sender, KeyEventArgs e)
         {
-            Debug.WriteLine("key pressed");
-            Debug.WriteLine("Mode : " + Program.mode + " ReadOnly : " + Program.readmode);
             if (e.Control && e.KeyCode == Keys.F)
                 ShowFind();
             else if (e.Control && e.KeyCode == Keys.Z)

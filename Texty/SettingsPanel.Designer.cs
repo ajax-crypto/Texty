@@ -24,7 +24,7 @@ namespace Texty
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        //#region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -32,7 +32,7 @@ namespace Texty
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.HeaderLabel = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.ForeColorButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,22 +47,27 @@ namespace Texty
             this.LeftAlignment = new System.Windows.Forms.RadioButton();
             this.SampleTextLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).BeginInit();
             this.ColorBox.SuspendLayout();
             this.FontBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // FadeInTimer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(146, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Settings";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.FadeInTimer.Enabled = true;
+            // 
+            // HeaderLabel
+            // 
+            this.HeaderLabel.AutoSize = true;
+            this.HeaderLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderLabel.Location = new System.Drawing.Point(146, 12);
+            this.HeaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.HeaderLabel.Name = "HeaderLabel";
+            this.HeaderLabel.Size = new System.Drawing.Size(117, 37);
+            this.HeaderLabel.TabIndex = 0;
+            this.HeaderLabel.Text = "Settings";
+            this.HeaderLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // ExitButton
             // 
@@ -76,7 +81,7 @@ namespace Texty
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(111, 37);
             this.ExitButton.TabIndex = 6;
-            this.ExitButton.Text = "Cancel";
+            this.ExitButton.Text = "Close";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
@@ -259,7 +264,7 @@ namespace Texty
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.ExitButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HeaderLabel);
             this.Controls.Add(this.FontBox);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -268,6 +273,7 @@ namespace Texty
             this.Name = "SettingsPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingsPanel";
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).EndInit();
             this.ColorBox.ResumeLayout(false);
             this.FontBox.ResumeLayout(false);
             this.FontBox.PerformLayout();
@@ -278,7 +284,7 @@ namespace Texty
 
         }
 
-        #endregion
+       // #endregion
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -300,7 +306,7 @@ namespace Texty
             }
         }
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button ForeColorButton;
         private System.Windows.Forms.Label label2;

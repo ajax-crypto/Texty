@@ -9,16 +9,18 @@ using System.Windows.Forms;
 
 namespace Texty
 {
-    public partial class AboutBox : Form
+    public partial class AboutBox : TextyForm
     {
         public AboutBox()
         {
             InitializeComponent();
+            this.FadeInTimer.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

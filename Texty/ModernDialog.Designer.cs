@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        //#region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -33,6 +33,8 @@
             this.CenterButton = new System.Windows.Forms.Button();
             this.LeftButton = new System.Windows.Forms.Button();
             this.HeaderLabel = new System.Windows.Forms.Label();
+            this.FadeTimer = new System.Timers.Timer();
+            ((System.ComponentModel.ISupportInitialize)(this.FadeTimer)).BeginInit();
             this.SuspendLayout();
             // 
             // DescriptionLabel
@@ -97,6 +99,12 @@
             this.HeaderLabel.Text = "Header";
             this.HeaderLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // FadeTimer
+            // 
+            this.FadeTimer.Enabled = true;
+            this.FadeTimer.Interval = 20D;
+            this.FadeTimer.SynchronizingObject = this;
+            // 
             // ModernDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -114,17 +122,29 @@
             this.Name = "ModernDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModernDialog";
+            ((System.ComponentModel.ISupportInitialize)(this.FadeTimer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        #endregion
+        private void FadeTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            this.Opacity += 0.1;
+            if (this.Opacity >= .9)
+            {
+                this.Opacity = 1;
+                this.FadeTimer.Enabled = false;
+            }
+        }
+
+        //#endregion
 
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button CenterButton;
         private System.Windows.Forms.Button LeftButton;
         private System.Windows.Forms.Label HeaderLabel;
+        private System.Timers.Timer FadeTimer;
     }
 }

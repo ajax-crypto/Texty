@@ -9,11 +9,12 @@ using System.Windows.Forms;
 
 namespace Texty
 {
-    public partial class Credits : Form
+    public partial class Credits : TextyForm
     {
         public Credits()
         {
             InitializeComponent();
+            this.FadeInTimer.Enabled = true;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

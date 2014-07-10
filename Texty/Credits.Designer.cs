@@ -31,7 +31,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OKbutton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).BeginInit();
             this.SuspendLayout();
+            // 
+            // FadeInTimer
+            // 
+            this.FadeInTimer.Enabled = false;
             // 
             // label1
             // 
@@ -84,6 +89,7 @@
             this.Name = "Credits";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credits";
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

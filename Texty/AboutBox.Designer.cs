@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,7 @@
             this.OKbutton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.OKbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.OKbutton.Location = new System.Drawing.Point(133, 368);
+            this.OKbutton.Location = new System.Drawing.Point(138, 368);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(96, 32);
             this.OKbutton.TabIndex = 6;
@@ -147,8 +148,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AboutBox";
+            this.Opacity = 0.1D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AboutBox";
+            ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
