@@ -24,6 +24,7 @@ namespace Texty
             this.Contents.KeyDown += Contents_MultiKey;
             this.Contents.SelectionChanged += Contents_SelectionChanged;
             this.Contents.TextChanged += Contents_TextChanged;
+            this.OpenedFilesListBox.DrawItem += OpenedFilesListBox_DrawItem;
             this.ExitButton.MouseEnter += ExitButton_MouseEnter;
             this.ExitButton.MouseLeave += ExitButton_MouseLeave;
             this.SystemExplorer.AfterSelect += SystemExplorer_AfterSelect;
@@ -69,15 +70,26 @@ namespace Texty
             UpdateSettings();
         }
 
-        private void ConvertToRTF(string file)
+        void OpenedFilesListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            Spire.Doc.Document doc = new Spire.Doc.Document();
-            doc.LoadFromFile(file);
-            doc.SaveToFile("temp.rtf", Spire.Doc.FileFormat.Rtf);
-            Contents.LoadFile("temp.rtf");
-            File.Delete("temp.rtf");
-        }
+            if (e.Index < 0) return;
+            //if the item state is selected then change the back color 
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e = new DrawItemEventArgs(e.Graphics,
+                                          e.Font,
+                                          e.Bounds,
+                                          e.Index,
+                                          e.State ^ DrawItemState.Selected,
+                                          e.ForeColor,
+                                          Color.FromArgb(230, 230, 230));
 
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Draw the current item text
+            e.Graphics.DrawString(OpenedFilesListBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
+        }
 
         private void recentToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
@@ -94,38 +106,6 @@ namespace Texty
                 };
                 recentToolStripMenuItem.DropDownItems.Add(item);
             }
-        }
-
-        private void OpenFile(string name)
-        {
-            if (!File.Exists(name))
-                return;
-            if (!Program.IsSaved)
-            {
-                ModernDialog dialog = new ModernDialog("Save Existing ?", "Save the existing changes ?", "Dont", "Save");
-                dialog.ShowDialog();
-                switch (dialog.result)
-                {
-                    case ModernDialog.LEFT:
-                        break;
-                    case ModernDialog.CENTER:
-                        bool result = SaveFile();
-                        if (!result)
-                            return;
-                        break;
-                    case ModernDialog.CANCEL:
-                        return;
-                }
-            }
-            ReadToApplication(name);
-            SetProperties(Path.GetExtension(name));
-            ProcessFile(Path.GetExtension(name));
-            Program.content = Contents.Text;
-            Program.CurrentFile = Path.GetFileName(name);
-            Program.IsNew = false;
-            Program.IsSaved = true;
-            Doc1.Text = Path.GetFileName(name);
-            History.Add(name);
         }
 
         private void editToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -227,27 +207,42 @@ namespace Texty
 
         private void ReadToApplication(string name)
         {
-            if (Path.GetExtension(name).Equals(".rtf"))
-                Contents.LoadFile(name);
-            else if (Path.GetExtension(name).Equals(".docx") ||
-                     Path.GetExtension(name).Equals(".doc"))
-                ConvertToRTF(name);
-            else if (Path.GetExtension(name).Equals(".pdf"))
-                ConvertToText(name);
-            else
-                Contents.Text = File.ReadAllText(name);
+            Contents.Text = "";
+            ClearFormatting();
+            Doc1.Text = Path.GetFileName(name);
+            FileHandler.ReadFile(name, ref Contents);
+            FileStore.AddFile(name, Contents.Rtf);
+            FileStore.SetCurrent(name);
+            SetProperties(name);
+            ProcessFile(name);
+            Program.CurrentFile = name;
+            Program.IsNew = false;
+            Program.IsSaved = true;
+            History.Add(name);
         }
 
-        private void ConvertToText(string name)
+        private void OpenFile(string name)
         {
-            iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(name);
-            string text = string.Empty;
-            for (int page = 1; page <= reader.NumberOfPages; page++)
+            if (!File.Exists(name))
+                return;
+            if (!Program.IsSaved)
             {
-                text += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(reader, page);
+                ModernDialog dialog = new ModernDialog("Save Existing ?", "Save the existing changes ?", "Dont", "Save");
+                dialog.ShowDialog();
+                switch (dialog.result)
+                {
+                    case ModernDialog.LEFT:
+                        break;
+                    case ModernDialog.CENTER:
+                        bool result = SaveFile();
+                        if (!result)
+                            return;
+                        break;
+                    case ModernDialog.CANCEL:
+                        return;
+                }
             }
-            reader.Close();
-            Contents.Text = text;
+            ReadToApplication(name);
         }
 
         private void OpenFile()
@@ -285,25 +280,15 @@ namespace Texty
                 {
                     using (stream)
                     {
-                        Contents.Text = "";
-                        ClearFormatting();
                         ReadToApplication(open.FileName);
-                        Program.content = Contents.Text;
-                        String ext = Path.GetExtension(open.FileName);
-                        Doc1.Text = Path.GetFileName(open.FileName);
-                        SetProperties(ext);
-                        ProcessFile(ext);
-                        Program.CurrentFile = open.FileName;
-                        Program.IsNew = false;
-                        Program.IsSaved = true;
-                        History.Add(open.FileName);
                     }
                 }
             }
         }
 
-        private void SetProperties(string ext)
+        private void SetProperties(string file)
         {
+            string ext = Path.GetExtension(file);
             if (ext.Equals(".rtf") || ext.Equals(".docx"))
             {
                 Program.mode = Program.TEXT;
@@ -351,13 +336,13 @@ namespace Texty
                 ItalicsButton.Enabled = true;
                 UnderlineButton.Enabled = true;
                 UpdateSettings();
-                return;
             }
             int wc = Contents.Text.Split(' ').Length;
             int lc = Contents.Text.Split('\n').Length;
             WCStatusLabel.Text = "Words : " + wc;
             LCStatusLabel.Text = "Lines: " + lc;
             SaveStatus.Text = "Saved";
+            OpenedFilesListBox.Items.Add(new FileContainer(file, Contents.Rtf));
         }
 
         private void OpenButton_Click(object sender, EventArgs e)
@@ -365,40 +350,9 @@ namespace Texty
             OpenFile();
         }
 
-        private void ProcessFile(string ext)
+        private void ProcessFile(string name)
         {
-            String content = Contents.Text;
-            List<Triplet> list = new List<Triplet>();
-            if (ext.Equals(".c"))
-            {
-                list = LangC.GetIndexesWithColor(content,
-                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
-            }
-            else if (ext.Equals(".cpp"))
-            {
-                list = LangCPP.GetIndexesWithColor(content,
-                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
-
-            }
-            else if (ext.Equals(".java"))
-            {
-                list = LangJava.GetIndexesWithColor(content,
-                    Color.Blue, Color.Gray, Color.Maroon);
-
-            }
-            else if (ext.Equals(".cs"))
-            {
-                list = LangCSharp.GetIndexesWithColor(content,
-                    Color.Blue, Color.Gray, Color.DarkGreen, Color.Maroon);
-            }
-            else if (ext.Equals(".js"))
-            {
-                list = LangJS.GetIndexesWithColor(content,
-                    Color.Blue, Color.Gray, Color.Maroon);
-            }
-            else
-                return;
-            
+            var list = FileHandler.GetHighlightingInfo(name, Contents.Text);
             ClearFormatting();
 
             // Lock Screen View
@@ -1281,6 +1235,13 @@ namespace Texty
             string content = Contents.Rtf;
             string html = MarkupConverter.RtfToHtmlConverter.ConvertRtfToHtml(content);
             File.WriteAllText(Program.CurrentFile + ".html", html);
+        }
+
+        private void OpenedFilesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FileContainer file = (OpenedFilesListBox.SelectedItem as FileContainer);
+            Contents.Rtf = FileStore.GetContents(file.GetPath());
+            ProcessFile(file.GetPath());
         }
 
     }

@@ -62,6 +62,7 @@ namespace Texty
             this.FindButton = new System.Windows.Forms.Button();
             this.Contents = new System.Windows.Forms.RichTextBox();
             this.SidePanelContainer = new System.Windows.Forms.SplitContainer();
+            this.OpenedFilesListBox = new System.Windows.Forms.ListBox();
             this.SystemExplorer = new System.Windows.Forms.TreeView();
             this.AppStatus = new System.Windows.Forms.StatusStrip();
             this.WCStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,6 +77,7 @@ namespace Texty
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,13 +118,13 @@ namespace Texty
             this.BoldButton = new System.Windows.Forms.Button();
             this.Minimise = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.hTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
             this.FindReplacePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SidePanelContainer)).BeginInit();
+            this.SidePanelContainer.Panel1.SuspendLayout();
             this.SidePanelContainer.Panel2.SuspendLayout();
             this.SidePanelContainer.SuspendLayout();
             this.AppStatus.SuspendLayout();
@@ -179,10 +181,10 @@ namespace Texty
             // Doc1
             // 
             this.Doc1.AutoSize = true;
-            this.Doc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Doc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Doc1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Doc1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Doc1.Location = new System.Drawing.Point(845, 67);
+            this.Doc1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Doc1.Location = new System.Drawing.Point(817, 579);
             this.Doc1.Name = "Doc1";
             this.Doc1.Size = new System.Drawing.Size(43, 21);
             this.Doc1.TabIndex = 14;
@@ -436,12 +438,29 @@ namespace Texty
             this.SidePanelContainer.Name = "SidePanelContainer";
             this.SidePanelContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
+            // SidePanelContainer.Panel1
+            // 
+            this.SidePanelContainer.Panel1.Controls.Add(this.OpenedFilesListBox);
+            // 
             // SidePanelContainer.Panel2
             // 
             this.SidePanelContainer.Panel2.Controls.Add(this.SystemExplorer);
             this.SidePanelContainer.Size = new System.Drawing.Size(236, 485);
             this.SidePanelContainer.SplitterDistance = 242;
             this.SidePanelContainer.TabIndex = 17;
+            // 
+            // OpenedFilesListBox
+            // 
+            this.OpenedFilesListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.OpenedFilesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OpenedFilesListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenedFilesListBox.FormattingEnabled = true;
+            this.OpenedFilesListBox.ItemHeight = 17;
+            this.OpenedFilesListBox.Location = new System.Drawing.Point(0, 0);
+            this.OpenedFilesListBox.Name = "OpenedFilesListBox";
+            this.OpenedFilesListBox.Size = new System.Drawing.Size(236, 242);
+            this.OpenedFilesListBox.TabIndex = 0;
+            this.OpenedFilesListBox.SelectedIndexChanged += new System.EventHandler(this.OpenedFilesListBox_SelectedIndexChanged);
             // 
             // SystemExplorer
             // 
@@ -461,7 +480,7 @@ namespace Texty
             this.WCStatusLabel,
             this.LCStatusLabel,
             this.SaveStatus});
-            this.AppStatus.Location = new System.Drawing.Point(0, 587);
+            this.AppStatus.Location = new System.Drawing.Point(0, 578);
             this.AppStatus.Name = "AppStatus";
             this.AppStatus.Size = new System.Drawing.Size(1061, 22);
             this.AppStatus.TabIndex = 31;
@@ -500,7 +519,7 @@ namespace Texty
             this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.TextyMenu.Location = new System.Drawing.Point(5, 66);
             this.TextyMenu.Name = "TextyMenu";
-            this.TextyMenu.Size = new System.Drawing.Size(343, 25);
+            this.TextyMenu.Size = new System.Drawing.Size(251, 25);
             this.TextyMenu.TabIndex = 32;
             this.TextyMenu.Text = "menuStrip1";
             // 
@@ -524,34 +543,34 @@ namespace Texty
             // 
             this.saveToolStripMenuItem.Image = global::Texty.Properties.Resources.save;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Image = global::Texty.Properties.Resources.opendoc;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = global::Texty.Properties.Resources._new;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // recentToolStripMenuItem
             // 
             this.recentToolStripMenuItem.Image = global::Texty.Properties.Resources.overview_pages_1_2561;
             this.recentToolStripMenuItem.Name = "recentToolStripMenuItem";
-            this.recentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recentToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.recentToolStripMenuItem.Text = "&Recent";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
             // 
             // exportToToolStripMenuItem
             // 
@@ -559,33 +578,40 @@ namespace Texty
             this.pDFToolStripMenuItem,
             this.hTMLToolStripMenuItem});
             this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
-            this.exportToToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exportToToolStripMenuItem.Text = "&Export To";
             // 
             // pDFToolStripMenuItem
             // 
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.pDFToolStripMenuItem.Text = "&PDF";
             this.pDFToolStripMenuItem.Click += new System.EventHandler(this.pDFToolStripMenuItem_Click);
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.hTMLToolStripMenuItem.Text = "&HTML";
+            this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Image = global::Texty.Properties.Resources.print;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.printToolStripMenuItem.Text = "&Print";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(132, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::Texty.Properties.Resources.close;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
@@ -829,7 +855,7 @@ namespace Texty
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1061, 609);
+            this.shapeContainer1.Size = new System.Drawing.Size(1061, 600);
             this.shapeContainer1.TabIndex = 33;
             this.shapeContainer1.TabStop = false;
             // 
@@ -915,29 +941,21 @@ namespace Texty
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // hTMLToolStripMenuItem
-            // 
-            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
-            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hTMLToolStripMenuItem.Text = "&HTML";
-            this.hTMLToolStripMenuItem.Click += new System.EventHandler(this.hTMLToolStripMenuItem_Click);
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1061, 609);
+            this.ClientSize = new System.Drawing.Size(1061, 600);
+            this.Controls.Add(this.Doc1);
             this.Controls.Add(this.FindTopButton);
             this.Controls.Add(this.TextyMenu);
-            this.Controls.Add(this.AppStatus);
             this.Controls.Add(this.MainContainer);
             this.Controls.Add(this.UnderlineButton);
             this.Controls.Add(this.ItalicsButton);
             this.Controls.Add(this.BoldButton);
             this.Controls.Add(this.ModeLabel);
             this.Controls.Add(this.SettingsButton);
-            this.Controls.Add(this.Doc1);
             this.Controls.Add(this.Minimise);
             this.Controls.Add(this.NewContent);
             this.Controls.Add(this.FontSelection);
@@ -945,6 +963,7 @@ namespace Texty
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.AppStatus);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainView";
@@ -956,6 +975,7 @@ namespace Texty
             this.MainContainer.ResumeLayout(false);
             this.FindReplacePanel.ResumeLayout(false);
             this.FindReplacePanel.PerformLayout();
+            this.SidePanelContainer.Panel1.ResumeLayout(false);
             this.SidePanelContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SidePanelContainer)).EndInit();
             this.SidePanelContainer.ResumeLayout(false);
@@ -1113,6 +1133,7 @@ namespace Texty
         private ToolStripMenuItem exportToToolStripMenuItem;
         private ToolStripMenuItem pDFToolStripMenuItem;
         private ToolStripMenuItem hTMLToolStripMenuItem;
+        private ListBox OpenedFilesListBox;
     }
 }
 

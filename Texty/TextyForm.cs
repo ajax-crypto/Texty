@@ -32,7 +32,6 @@ namespace Texty
             if (this.Opacity > OPACITY_CHANGE)
             {
                 e.Cancel = true;
-                System.Diagnostics.Debug.WriteLine("form closing...");
                 this.FadeOutTimer.Enabled = true;
             }
         }
@@ -48,7 +47,6 @@ namespace Texty
 
         void FadeOutTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("fade out : " + this.Opacity + " " + OPACITY_CHANGE);
             this.Opacity -= OPACITY_CHANGE;
             if (this.Opacity <= OPACITY_CHANGE)
             {
@@ -60,7 +58,6 @@ namespace Texty
 
         void FadeInTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("fade in : " + this.Opacity + " " + OPACITY_CHANGE);
             this.Opacity += this.OPACITY_CHANGE;
             if (this.Opacity >= 1.0)
             {
