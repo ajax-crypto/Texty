@@ -27,6 +27,7 @@ namespace Texty
             this.OpenedFilesListBox.DrawItem += OpenedFilesListBox_DrawItem;
             this.ExitButton.MouseEnter += ExitButton_MouseEnter;
             this.ExitButton.MouseLeave += ExitButton_MouseLeave;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
             this.SystemExplorer.AfterSelect += SystemExplorer_AfterSelect;
 
             this.ReplaceButton.Click += ReplaceButton_Click;

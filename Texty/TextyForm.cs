@@ -10,6 +10,18 @@ namespace Texty
         protected double OPACITY_CHANGE = 0.1;
         protected double TIMER_INTERVAL = 20.0;
 
+        //private const int CS_DROPSHADOW = 0x20000;
+        protected override System.Windows.Forms.CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 131072;
+                System.Windows.Forms.CreateParams cparams = base.CreateParams;
+                cparams.ClassStyle = CS_DROPSHADOW;
+                return cparams; 
+            }
+        }
+
         public TextyForm()
         {
             this.FadeInTimer = new System.Timers.Timer();
