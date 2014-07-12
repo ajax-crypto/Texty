@@ -39,13 +39,15 @@
             // 
             // DescriptionLabel
             // 
+            this.DescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DescriptionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DescriptionLabel.Location = new System.Drawing.Point(22, 58);
+            this.DescriptionLabel.Location = new System.Drawing.Point(114, 58);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(0, 15);
+            this.DescriptionLabel.Size = new System.Drawing.Size(71, 15);
             this.DescriptionLabel.TabIndex = 9;
+            this.DescriptionLabel.Text = "Description";
             // 
             // CancelButton
             // 
@@ -89,10 +91,11 @@
             // 
             // HeaderLabel
             // 
+            this.HeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HeaderLabel.AutoSize = true;
             this.HeaderLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HeaderLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.HeaderLabel.Location = new System.Drawing.Point(93, 20);
+            this.HeaderLabel.Location = new System.Drawing.Point(113, 20);
             this.HeaderLabel.Name = "HeaderLabel";
             this.HeaderLabel.Size = new System.Drawing.Size(74, 25);
             this.HeaderLabel.TabIndex = 5;
@@ -122,6 +125,7 @@
             this.Name = "ModernDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModernDialog";
+            this.Load += new System.EventHandler(this.ModernDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FadeTimer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -485,7 +485,8 @@ namespace Texty
             this.SaveStatus});
             this.AppStatus.Location = new System.Drawing.Point(8, 575);
             this.AppStatus.Name = "AppStatus";
-            this.AppStatus.Size = new System.Drawing.Size(156, 22);
+            this.AppStatus.Size = new System.Drawing.Size(187, 22);
+            this.AppStatus.SizingGrip = false;
             this.AppStatus.TabIndex = 31;
             // 
             // WCStatusLabel
@@ -522,6 +523,7 @@ namespace Texty
             this.TextyMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.TextyMenu.Location = new System.Drawing.Point(5, 66);
             this.TextyMenu.Name = "TextyMenu";
+            this.TextyMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.TextyMenu.Size = new System.Drawing.Size(251, 25);
             this.TextyMenu.TabIndex = 32;
             this.TextyMenu.Text = "menuStrip1";

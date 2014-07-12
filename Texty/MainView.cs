@@ -16,6 +16,29 @@ namespace Texty
         ToolStripMenuItem copy, cut, paste, del;
         ContextMenuStrip cm;
 
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+        }
+
+        private class MyColors : ProfessionalColorTable
+        {
+            public override Color MenuItemSelected
+            {
+                get { return Color.Yellow; }
+            }
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.Orange; }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.Yellow; }
+            }
+
+            public MyColors() : base() { base.UseSystemColors = false; }
+        }
+
         public MainView()
         {
             InitializeComponent();
@@ -23,6 +46,9 @@ namespace Texty
 
             this.Paint += MainView_Paint;
             this.MouseDown += MainView_MouseDown;
+
+            //this.TextyMenu
+            this.TextyMenu.Renderer = new MyRenderer();
 
             this.Contents.GotFocus += Contents_GotFocus;
             this.Contents.KeyDown += Contents_MultiKey;

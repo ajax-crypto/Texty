@@ -46,6 +46,12 @@ namespace Texty
             this.Close();
         }
 
+        private void ModernDialog_Load(object sender, EventArgs e)
+        {
+            this.HeaderLabel.Left = (this.ClientRectangle.Width - this.HeaderLabel.ClientRectangle.Width) / 2;
+            this.DescriptionLabel.Left = (this.ClientRectangle.Width - this.DescriptionLabel.ClientRectangle.Width) / 2;
+        }
+
 
     }
 }
