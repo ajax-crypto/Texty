@@ -19,15 +19,22 @@ namespace Texty
         public MainView()
         {
             InitializeComponent();
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
+
+            this.Paint += MainView_Paint;
             this.MouseDown += MainView_MouseDown;
+
             this.Contents.GotFocus += Contents_GotFocus;
             this.Contents.KeyDown += Contents_MultiKey;
             this.Contents.SelectionChanged += Contents_SelectionChanged;
             this.Contents.TextChanged += Contents_TextChanged;
+
             this.OpenedFilesListBox.DrawItem += OpenedFilesListBox_DrawItem;
+
             this.ExitButton.MouseEnter += ExitButton_MouseEnter;
             this.ExitButton.MouseLeave += ExitButton_MouseLeave;
             this.ExitButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
             this.SystemExplorer.AfterSelect += SystemExplorer_AfterSelect;
 
             this.ReplaceButton.Click += ReplaceButton_Click;
@@ -69,6 +76,15 @@ namespace Texty
 
             Program.settings = Settings.GetSettingsObject();
             UpdateSettings();
+        }
+
+        void MainView_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
+                Color.LightGray, 1, ButtonBorderStyle.Solid,
+                Color.LightGray, 1, ButtonBorderStyle.Solid,
+                Color.LightGray, 1, ButtonBorderStyle.Solid,
+                Color.LightGray, 1, ButtonBorderStyle.Solid);
         }
 
         void OpenedFilesListBox_DrawItem(object sender, DrawItemEventArgs e)

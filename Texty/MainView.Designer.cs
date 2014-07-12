@@ -140,11 +140,11 @@ namespace Texty
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(13, -4);
+            this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 65);
+            this.label1.Size = new System.Drawing.Size(107, 47);
             this.label1.TabIndex = 9;
             this.label1.Text = "Texty";
             // 
@@ -181,12 +181,12 @@ namespace Texty
             // Doc1
             // 
             this.Doc1.AutoSize = true;
-            this.Doc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Doc1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Doc1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Doc1.Location = new System.Drawing.Point(817, 579);
+            this.Doc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.Doc1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Doc1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Doc1.Location = new System.Drawing.Point(822, 576);
             this.Doc1.Name = "Doc1";
-            this.Doc1.Size = new System.Drawing.Size(43, 21);
+            this.Doc1.Size = new System.Drawing.Size(35, 17);
             this.Doc1.TabIndex = 14;
             this.Doc1.Text = "New";
             // 
@@ -474,15 +474,18 @@ namespace Texty
             // 
             // AppStatus
             // 
+            this.AppStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AppStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.AppStatus.Dock = System.Windows.Forms.DockStyle.None;
             this.AppStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppStatus.GripMargin = new System.Windows.Forms.Padding(0);
             this.AppStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WCStatusLabel,
             this.LCStatusLabel,
             this.SaveStatus});
-            this.AppStatus.Location = new System.Drawing.Point(0, 578);
+            this.AppStatus.Location = new System.Drawing.Point(8, 575);
             this.AppStatus.Name = "AppStatus";
-            this.AppStatus.Size = new System.Drawing.Size(1061, 22);
+            this.AppStatus.Size = new System.Drawing.Size(156, 22);
             this.AppStatus.TabIndex = 31;
             // 
             // WCStatusLabel
@@ -989,6 +992,8 @@ namespace Texty
         }
         #endregion
 
+        #region Native Hooks
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -1048,6 +1053,19 @@ namespace Texty
             SendMessage(Contents.Handle, WM_SETREDRAW, 1, 0);
             SendMessage(Contents.Handle, EM_SETEVENTMASK, 0, OldEventMask);
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,
+            int nTopRect,
+            int nRightRect,
+            int nBottomRect,
+            int nWidthEllipse,
+            int nHeightEllipse
+         );
+
+        #endregion
 
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button OpenButton;
