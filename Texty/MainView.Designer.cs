@@ -485,7 +485,7 @@ namespace Texty
             this.SaveStatus});
             this.AppStatus.Location = new System.Drawing.Point(8, 575);
             this.AppStatus.Name = "AppStatus";
-            this.AppStatus.Size = new System.Drawing.Size(187, 22);
+            this.AppStatus.Size = new System.Drawing.Size(156, 22);
             this.AppStatus.SizingGrip = false;
             this.AppStatus.TabIndex = 31;
             // 
@@ -524,7 +524,7 @@ namespace Texty
             this.TextyMenu.Location = new System.Drawing.Point(5, 66);
             this.TextyMenu.Name = "TextyMenu";
             this.TextyMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.TextyMenu.Size = new System.Drawing.Size(251, 25);
+            this.TextyMenu.Size = new System.Drawing.Size(343, 25);
             this.TextyMenu.TabIndex = 32;
             this.TextyMenu.Text = "menuStrip1";
             // 
@@ -704,7 +704,7 @@ namespace Texty
             // 
             this.replaceToolStripMenuItem.Image = global::Texty.Properties.Resources._ref;
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.replaceToolStripMenuItem.Text = "Rep&lace";
             // 
             // toolStripSeparator5
@@ -866,6 +866,7 @@ namespace Texty
             // 
             // rectangleShape1
             // 
+            this.rectangleShape1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rectangleShape1.FillColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
             this.rectangleShape1.Location = new System.Drawing.Point(1, 12);

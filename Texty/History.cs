@@ -17,7 +17,7 @@ namespace Texty
 
             public SerializedContents(List<string> from)
             {
-                for (int i = 0; i < BUFFER_SIZE || i < from.Count; ++i)
+                for (int i = 0; i < BUFFER_SIZE && i < from.Count; ++i)
                     names[i] = from[i];
             }
 

@@ -25,15 +25,22 @@ namespace Texty
         {
             public override Color MenuItemSelected
             {
-                get { return Color.Yellow; }
+                get { return Color.Gray; }
             }
+
+            public override Color MenuItemBorder
+            {
+                get { return Color.Gray; }
+            }
+
             public override Color MenuItemSelectedGradientBegin
             {
-                get { return Color.Orange; }
+                get { return Color.Gray; }
             }
+
             public override Color MenuItemSelectedGradientEnd
             {
-                get { return Color.Yellow; }
+                get { return Color.Gray; }
             }
 
             public MyColors() : base() { base.UseSystemColors = false; }
@@ -85,6 +92,8 @@ namespace Texty
             this.copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             this.pasteToolStripMenuItem.Click += pasteToolStripMenuItem_Click;
             this.delToolStripMenuItem.Click += delToolStripMenuItem_Click;
+            this.findToolStripMenuItem.Click += findToolStripMenuItem_Click;
+            this.replaceToolStripMenuItem.Click += replaceToolStripMenuItem_Click;
             this.timeDateToolStripMenuItem.Click += timeDateToolStripMenuItem_Click;
 
             this.zoomOutToolStripMenuItem.Click += zoomOutToolStripMenuItem_Click;
@@ -567,6 +576,7 @@ namespace Texty
                             case ModernDialog.LEFT:
                                 Contents.ReadOnly = false;
                                 Program.readmode = false;
+                                Contents_MultiKey(sender, e);
                                 break;
                         }
                     }
@@ -580,8 +590,17 @@ namespace Texty
                         AutoCompletion.Opened('"');
                     else if (e.KeyCode == Keys.OemQuotes && !e.Shift)
                         AutoCompletion.Opened('\'');
+                    else if (e.KeyCode == Keys.Enter)
+                        InsertTab();
                     //else if(e.KeyCode == Keys.O
             }
+        }
+
+        private void InsertTab()
+        {
+            int index = Contents.GetLineFromCharIndex(Contents.SelectionStart);
+            string lastline = Contents.Lines[index];
+            Indentation.ExtractSpaces(lastline);
         }
 
         private void Contents_TextChanged(object sender, EventArgs e)
@@ -595,11 +614,15 @@ namespace Texty
             Program.content = Contents.Text;
             if (Program.mode == Program.DEVELOPER)
             {
+                if (Indentation.ToIndent())
+                {
+                    Contents.Select(Contents.SelectionStart, 0);
+                    Contents.SelectedText = Indentation.GetSpaces();
+                }
                 if (AutoCompletion.ToClose)
                 {
                     Contents.Select(Contents.SelectionStart, 0);
                     Contents.SelectedText = AutoCompletion.GetClosingChar();
-                    //Debug.WriteLine("auto : " + Contents.SelectedText);
                     Contents.SelectionStart -= 1;
                 }
             }
@@ -1097,13 +1120,12 @@ namespace Texty
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FindBox.Focus();
+            ShowFind();
         }
 
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FindBox.Text.Length > 0)
-                ReplaceBox.Focus();
+            ShowFind();
         }
 
         private void zoomToolStripMenuItem_Click(object sender, EventArgs e)

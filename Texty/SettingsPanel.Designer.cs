@@ -55,12 +55,13 @@ namespace Texty
             // 
             // FadeInTimer
             // 
-            this.FadeInTimer.Enabled = true;
+            this.FadeInTimer.Enabled = false;
             // 
             // HeaderLabel
             // 
             this.HeaderLabel.AutoSize = true;
             this.HeaderLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.HeaderLabel.Location = new System.Drawing.Point(146, 12);
             this.HeaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HeaderLabel.Name = "HeaderLabel";
@@ -75,7 +76,7 @@ namespace Texty
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ExitButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ExitButton.Location = new System.Drawing.Point(219, 383);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(4);
             this.ExitButton.Name = "ExitButton";
@@ -142,6 +143,7 @@ namespace Texty
             this.ColorBox.Controls.Add(this.BackColorButton);
             this.ColorBox.Controls.Add(this.ForeColorButton);
             this.ColorBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColorBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ColorBox.Location = new System.Drawing.Point(28, 282);
             this.ColorBox.Name = "ColorBox";
             this.ColorBox.Size = new System.Drawing.Size(348, 75);
@@ -172,6 +174,7 @@ namespace Texty
             this.FontBox.Controls.Add(this.WordWrapSet);
             this.FontBox.Controls.Add(this.label2);
             this.FontBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FontBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FontBox.Location = new System.Drawing.Point(28, 65);
             this.FontBox.Name = "FontBox";
             this.FontBox.Size = new System.Drawing.Size(348, 211);
@@ -185,6 +188,7 @@ namespace Texty
             this.groupBox1.Controls.Add(this.CenterAlignment);
             this.groupBox1.Controls.Add(this.LeftAlignment);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(24, 70);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(303, 69);
@@ -266,11 +270,13 @@ namespace Texty
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.HeaderLabel);
             this.Controls.Add(this.FontBox);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SettingsPanel";
+            this.Opacity = 1D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingsPanel";
             ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).EndInit();

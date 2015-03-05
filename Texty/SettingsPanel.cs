@@ -22,7 +22,7 @@ namespace Texty
         {
             InitializeComponent();
             this.MouseDown += SettingsPanel_MouseDown;
-            this.Opacity = 0.0;
+            //this.Opacity = 0.0;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

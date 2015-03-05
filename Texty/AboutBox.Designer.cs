@@ -40,6 +40,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.FadeInTimer)).BeginInit();
             this.SuspendLayout();
             // 
+            // FadeInTimer
+            // 
+            this.FadeInTimer.Enabled = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -93,7 +97,7 @@
             // 
             this.OKbutton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.OKbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OKbutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.OKbutton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OKbutton.Location = new System.Drawing.Point(138, 368);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(96, 32);
@@ -144,7 +148,7 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AboutBox";
